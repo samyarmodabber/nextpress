@@ -1,14 +1,18 @@
 import { ReactNode } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog, Authors } from 'contentlayer/generated'
-import Comments from '@/components/Comments'
-import Link from '@/components/Link'
-import PageTitle from '@/components/PageTitle'
-import SectionContainer from '@/components/SectionContainer'
-import Image from '@/components/Image'
-import Tag from '@/components/Tag'
+
 import siteMetadata from '@/data/siteMetadata'
-import ScrollTopAndComment from '@/components/ScrollTopAndComment'
+
+import Comments from '@/components/blog/Comments'
+import Tag from '@/components/blog/Tag'
+
+import SectionContainer from '@/components/layouts/SectionContainer'
+import ScrollTopAndComment from '@/components/layouts/ScrollTopAndComment'
+
+import Link from '@/components/tools/Link'
+import Image from '@/components/tools/Image'
+import PageTitle from '@/components/tools/PageTitle'
 
 const editUrl = (path) => `${siteMetadata.siteRepo}/blob/main/data/${path}`
 const discussUrl = (path) =>
@@ -102,7 +106,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                 {` • `}
                 <Link href={editUrl(filePath)}>View on GitHub</Link>
               </div>
-              {siteMetadata.comments && (
+              {siteMetadata.comments.active && (
                 <div
                   className="pb-6 pt-6 text-center text-gray-700 dark:text-gray-300"
                   id="comment"

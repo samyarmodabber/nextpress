@@ -1,14 +1,20 @@
 import { ReactNode } from 'react'
-import Image from '@/components/Image'
 import Bleed from 'pliny/ui/Bleed'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog } from 'contentlayer/generated'
-import Comments from '@/components/Comments'
-import Link from '@/components/Link'
-import PageTitle from '@/components/PageTitle'
-import SectionContainer from '@/components/SectionContainer'
 import siteMetadata from '@/data/siteMetadata'
-import ScrollTopAndComment from '@/components/ScrollTopAndComment'
+
+// tools
+import Image from '@/components/tools/Image'
+import Link from '@/components/tools/Link'
+import PageTitle from '@/components/tools/PageTitle'
+
+// Blog
+import Comments from '@/components/blog/Comments'
+
+// layouts
+import SectionContainer from '@/components/layouts/SectionContainer'
+import ScrollTopAndComment from '@/components/layouts/ScrollTopAndComment'
 
 interface LayoutProps {
   content: CoreContent<Blog>
@@ -40,7 +46,7 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
             </div>
           </div>
           <div className="prose max-w-none py-4 dark:prose-invert">{children}</div>
-          {siteMetadata.comments && (
+          {siteMetadata.comments.active && (
             <div className="pb-6 pt-6 text-center text-gray-700 dark:text-gray-300" id="comment">
               <Comments slug={slug} />
             </div>

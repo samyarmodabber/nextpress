@@ -2,7 +2,7 @@
 
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
-import Link from './Link'
+import Link from '@/components/tools/Link'
 import headerNavLinks from '@/data/headerNavLinks'
 
 const MobileNav = () => {

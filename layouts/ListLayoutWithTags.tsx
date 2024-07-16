@@ -6,10 +6,13 @@ import { slug } from 'github-slugger'
 import { formatDate } from 'pliny/utils/formatDate'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog } from 'contentlayer/generated'
-import Link from '@/components/Link'
-import Tag from '@/components/Tag'
-import siteMetadata from '@/data/siteMetadata'
 import tagData from 'app/tag-data.json'
+
+import siteMetadata from '@/data/siteMetadata'
+
+// Components
+import Link from '@/components/tools/Link'
+import Tag from '@/components/blog/Tag'
 
 interface PaginationProps {
   totalPages: number

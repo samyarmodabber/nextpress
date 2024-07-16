@@ -5,9 +5,11 @@ import { usePathname } from 'next/navigation'
 import { formatDate } from 'pliny/utils/formatDate'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog } from 'contentlayer/generated'
-import Link from '@/components/Link'
-import Tag from '@/components/Tag'
+
 import siteMetadata from '@/data/siteMetadata'
+
+import Link from '@/components/tools/Link'
+import Tag from '@/components/blog/Tag'
 
 interface PaginationProps {
   totalPages: number

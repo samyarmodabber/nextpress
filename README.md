@@ -19,6 +19,14 @@ Facing issues? Check the [FAQ page](https://github.com/timlrx/tailwind-nextjs-st
 
 Feature request? Check the past discussions to see if it has been brought up previously. Otherwise, feel free to start a new discussion thread. All ideas are welcomed!
 
+## Some New for NextPressjs
+
+- [NextPressJS](https://nextpressjs.vercel.app/) is a new blogging platform built on Wordpress and Nextjs
+
+### Image Slider
+
+It is implement by code: [aindrila22](https://github.com/aindrila22/next-slider/tree/main)
+
 ## Variations
 
 **Note**: These are community contributed forks using different frameworks or with significant changes to the codebase - not officially supported.

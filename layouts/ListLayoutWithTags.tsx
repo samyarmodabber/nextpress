@@ -7,12 +7,14 @@ import { formatDate } from 'pliny/utils/formatDate'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog } from 'contentlayer/generated'
 import tagData from 'app/tag-data.json'
+import categoryData from 'app/category-data.json'
 
 import siteMetadata from '@/data/siteMetadata'
 
 // Components
 import Link from '@/components/tools/Link'
 import Tag from '@/components/blog/Tag'
+import Category from '@/components/blog/Category'
 
 interface PaginationProps {
   totalPages: number
@@ -72,9 +74,14 @@ export default function ListLayoutWithTags({
   pagination,
 }: ListLayoutProps) {
   const pathname = usePathname()
+  // Tags
   const tagCounts = tagData as Record<string, number>
   const tagKeys = Object.keys(tagCounts)
   const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a])
+  // Categories
+  const categoryCounts = categoryData as Record<string, number>
+  const categoryKeys = Object.keys(categoryCounts)
+  const sortedCategories = categoryKeys.sort((a, b) => categoryCounts[b] - categoryCounts[a])
 
   const displayPosts = initialDisplayPosts.length > 0 ? initialDisplayPosts : posts
 
@@ -100,32 +107,57 @@ export default function ListLayoutWithTags({
                 </Link>
               )}
               <ul>
-                {sortedTags.map((t) => {
+                <li className="my-3 font-bold text-primary-500">Categories</li>
+                {sortedCategories.map((cat) => {
                   return (
-                    <li key={t} className="my-3">
-                      {pathname.split('/tags/')[1] === slug(t) ? (
+                    <li key={cat} className="my-3">
+                      {pathname.split('/categories/')[1] === slug(cat) ? (
                         <h3 className="inline px-3 py-2 text-sm font-bold uppercase text-primary-500">
-                          {`${t} (${tagCounts[t]})`}
+                          {`${cat} (${categoryCounts[cat]})`}
                         </h3>
                       ) : (
                         <Link
-                          href={`/tags/${slug(t)}`}
+                          href={`/categories/${slug(cat)}`}
                           className="px-3 py-2 text-sm font-medium uppercase text-gray-500 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500"
-                          aria-label={`View posts tagged ${t}`}
+                          aria-label={`View posts categorised ${cat}`}
                         >
-                          {`${t} (${tagCounts[t]})`}
+                          {`${cat} (${categoryCounts[cat]})`}
                         </Link>
                       )}
                     </li>
                   )
                 })}
               </ul>
+              <br />
+              <ul>
+                <li className="my-3 font-bold text-primary-500">Tags</li>
+                {sortedTags.map((t) => {
+                  return (
+                    <span key={t} className="my-3">
+                      {pathname.split('/tags/')[1] === slug(t) ? (
+                        <h6 className="inline px-1 py-1 text-sm font-bold uppercase text-primary-500">
+                          {`${t} (${tagCounts[t]})`}
+                        </h6>
+                      ) : (
+                        <Link
+                          href={`/tags/${slug(t)}`}
+                          className="px-1 py-1 text-sm font-medium uppercase text-gray-500 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500"
+                          aria-label={`View posts tagged ${t}`}
+                        >
+                          {`${t} (${tagCounts[t]})`}
+                        </Link>
+                      )}
+                    </span>
+                  )
+                })}
+              </ul>
             </div>
           </div>
+          {/* Main Content */}
           <div>
             <ul>
               {displayPosts.map((post) => {
-                const { path, date, title, summary, tags } = post
+                const { path, date, title, summary, tags, categories } = post
                 return (
                   <li key={path} className="py-5">
                     <article className="flex flex-col space-y-2 xl:space-y-0">
@@ -142,6 +174,19 @@ export default function ListLayoutWithTags({
                               {title}
                             </Link>
                           </h2>
+                          {categories.length !== 0 && (
+                            <span className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                              Categories:
+                            </span>
+                          )}
+                          <div className="flex flex-wrap">
+                            {categories?.map((cat) => <Category key={cat} text={cat} />)}
+                          </div>
+                          {tags.length !== 0 && (
+                            <span className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                              Tags:
+                            </span>
+                          )}
                           <div className="flex flex-wrap">
                             {tags?.map((tag) => <Tag key={tag} text={tag} />)}
                           </div>

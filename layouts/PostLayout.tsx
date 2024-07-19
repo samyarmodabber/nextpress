@@ -6,6 +6,7 @@ import siteMetadata from '@/data/siteMetadata'
 
 import Comments from '@/components/blog/Comments'
 import Tag from '@/components/blog/Tag'
+import Category from '@/components/blog/Category'
 
 import SectionContainer from '@/components/layouts/SectionContainer'
 import ScrollTopAndComment from '@/components/layouts/ScrollTopAndComment'
@@ -34,7 +35,7 @@ interface LayoutProps {
 }
 
 export default function PostLayout({ content, authorDetails, next, prev, children }: LayoutProps) {
-  const { filePath, path, slug, date, title, tags } = content
+  const { filePath, path, slug, date, title, tags, categories } = content
   const basePath = path.split('/')[0]
 
   return (
@@ -117,6 +118,18 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
             </div>
             <footer>
               <div className="divide-gray-200 text-sm font-medium leading-5 dark:divide-gray-700 xl:col-start-1 xl:row-start-2 xl:divide-y">
+                {categories && (
+                  <div className="py-4 xl:py-8">
+                    <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                      Categories
+                    </h2>
+                    <div className="flex flex-wrap">
+                      {categories.map((cat) => (
+                        <Category key={cat} text={cat} />
+                      ))}
+                    </div>
+                  </div>
+                )}
                 {tags && (
                   <div className="py-4 xl:py-8">
                     <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">

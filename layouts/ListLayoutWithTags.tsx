@@ -136,7 +136,7 @@ export default function ListLayoutWithTags({
                     <span key={t} className="my-3">
                       {pathname.split('/tags/')[1] === slug(t) ? (
                         <h6 className="inline px-1 py-1 text-sm font-bold uppercase text-primary-500">
-                          {`${t} (${tagCounts[t]})`}
+                          {`${t}(${tagCounts[t]}) `}
                         </h6>
                       ) : (
                         <Link
@@ -144,7 +144,7 @@ export default function ListLayoutWithTags({
                           className="px-1 py-1 text-sm font-medium uppercase text-gray-500 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500"
                           aria-label={`View posts tagged ${t}`}
                         >
-                          {`${t} (${tagCounts[t]})`}
+                          {`${t}(${tagCounts[t]}) `}
                         </Link>
                       )}
                     </span>

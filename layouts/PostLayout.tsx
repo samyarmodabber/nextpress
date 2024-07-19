@@ -107,7 +107,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                 {` • `}
                 <Link href={editUrl(filePath)}>View on GitHub</Link>
               </div>
-              {siteMetadata.comments && (
+              {siteMetadata.comments?.provider && (
                 <div
                   className="pb-6 pt-6 text-center text-gray-700 dark:text-gray-300"
                   id="comment"

@@ -25,7 +25,7 @@ Feature request? Check the past discussions to see if it has been brought up pre
 
 ### Image Slider
 
-It is implement by code: [aindrila22](https://github.com/aindrila22/next-slider/tree/main)
+It is implement by code: [aindrila22](https://github.com/aindrila22/next-slider/tree/main) See on [Youtube](https://www.youtube.com/watch?v=YcxiUn7k0Ks)
 
 ## Variations
 

@@ -14,6 +14,8 @@ import ScrollTopAndComment from '@/components/layouts/ScrollTopAndComment'
 import Link from '@/components/tools/Link'
 import Image from '@/components/tools/Image'
 import PageTitle from '@/components/tools/PageTitle'
+import TOCInLine from '@/components/blog/TOCInLine'
+import { AnyNode } from 'postcss'
 
 const editUrl = (path) => `${siteMetadata.siteRepo}/blob/main/data/${path}`
 const discussUrl = (path) =>
@@ -32,9 +34,17 @@ interface LayoutProps {
   next?: { path: string; title: string }
   prev?: { path: string; title: string }
   children: ReactNode
+  toc: AnyNode
 }
 
-export default function PostLayout({ content, authorDetails, next, prev, children }: LayoutProps) {
+export default function PostLayout({
+  content,
+  authorDetails,
+  next,
+  prev,
+  children,
+  toc,
+}: LayoutProps) {
   const { filePath, path, slug, date, title, tags, categories } = content
   const basePath = path.split('/')[0]
 
@@ -175,6 +185,16 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                 >
                   &larr; Back to the blog
                 </Link>
+                <div className="sticky top-0 z-50">
+                  {toc && (
+                    <TOCInLine
+                      toc={toc}
+                      asDisclosure={true}
+                      toHeading={3}
+                      title="Table of Content"
+                    />
+                  )}
+                </div>
               </div>
             </footer>
           </div>

@@ -3,7 +3,7 @@ import siteMetadata from '@/data/siteMetadata'
 const Newslatter = () => {
   return (
     <>
-      {siteMetadata.newsletter.active && (
+      {siteMetadata.newsletter?.provider && (
         <div className="flex items-center justify-center pt-4">
           <NewsletterForm />
         </div>

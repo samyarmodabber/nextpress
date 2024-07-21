@@ -2,7 +2,7 @@ import React from 'react'
 import { usePathname } from 'next/navigation'
 import { slug } from 'github-slugger'
 import Link from '@/components/tools/Link'
-import categoryData from 'app/category-data.json'
+import categoryData from 'app/data/category-data.json'
 
 const PostCategories = () => {
   const pathname = usePathname()

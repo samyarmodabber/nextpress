@@ -3,7 +3,7 @@ import { slug } from 'github-slugger'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
 import { allBlogs } from 'contentlayer/generated'
 
-import categoryData from 'app/category-data.json'
+import categoryData from 'app/data/category-data.json'
 import siteMetadata from '@/data/siteMetadata'
 import ListLayout from '@/layouts/ListLayoutWithTags'
 import { genPageMetadata } from 'app/seo'

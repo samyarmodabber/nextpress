@@ -4,6 +4,7 @@
  * @prop {number} depth
  * @prop {string} url
  */
+import { slug } from 'github-slugger'
 
 /**
  * Generates an inline table of contents
@@ -21,12 +22,6 @@
  *
  */
 
-function stringToSlug(str) {
-  return str
-    .toLowerCase() // Convert the string to lowercase
-    .replace(/\s+/g, '-') // Replace spaces with dashes
-    .replace(/\./g, '') // remove dot
-}
 const TOCInLine = ({
   toc,
   indentDepth = 3,
@@ -50,7 +45,7 @@ const TOCInLine = ({
       {filteredToc.map((heading) => (
         <li key={heading.value} className={`${heading.depth >= indentDepth && 'ml-6'}`}>
           <a
-            href={'#' + stringToSlug(heading.value)}
+            href={'#' + slug(heading.value)}
             className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
           >
             {heading.value}

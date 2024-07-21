@@ -74,7 +74,7 @@ function createTagCount(allBlogs) {
       })
     }
   })
-  writeFileSync('./app/tag-data.json', JSON.stringify(tagCount))
+  writeFileSync('./app/data/tag-data.json', JSON.stringify(tagCount))
 }
 function createCategoryCount(allBlogs) {
   const catCount: Record<string, number> = {}
@@ -90,7 +90,7 @@ function createCategoryCount(allBlogs) {
       })
     }
   })
-  writeFileSync('./app/category-data.json', JSON.stringify(catCount))
+  writeFileSync('./app/data/category-data.json', JSON.stringify(catCount))
 }
 function createSearchIndex(allBlogs) {
   if (

@@ -2,7 +2,7 @@ import React from 'react'
 import Link from '@/components/tools/Link'
 import { usePathname } from 'next/navigation'
 import { slug } from 'github-slugger'
-import tagData from 'app/tag-data.json'
+import tagData from 'app/data/tag-data.json'
 
 const PostTags = () => {
   const pathname = usePathname()

@@ -22,7 +22,7 @@ const siteMetadata = {
   instagram: 'https://www.instagram.com',
   mastodon: 'https://mastodon.social',
   blog: {
-    MAX_DISPLAY: 5,
+    MAX_DISPLAY: 3,
     POSTS_PER_PAGE: 10,
   },
   analytics: {

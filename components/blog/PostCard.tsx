@@ -3,13 +3,28 @@ import Link from '@/components/tools/Link'
 import Tag from '@/components/blog/Tag'
 import Category from '@/components/blog/Category'
 import siteMetadata from '@/data/siteMetadata'
+import Image from '../tools/Image'
 
 const PostCard = ({ post }) => {
-  const { path, date, title, summary, tags, categories } = post
+  const { path, date, title, summary, tags, categories, images } = post
 
   return (
-    <li key={path} className="py-5">
-      <article className="flex flex-col space-y-2 xl:space-y-0">
+    <li key={path} className="mb-4 flex flex-col xl:flex-row">
+      <div className="flex xl:w-1/2">
+        <Link href={`/${path}`}>
+          <Image
+            src={
+              Array.isArray(images) && images.length > 0
+                ? images[0]
+                : '/static/images/twitter-card.png'
+            }
+            alt={title}
+            width={400}
+            height={300}
+          />
+        </Link>
+      </div>
+      <article className="flex flex-col space-y-2 xl:w-1/2 xl:space-y-0">
         <dl>
           <dt className="sr-only">Published on</dt>
           <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">

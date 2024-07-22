@@ -9,8 +9,12 @@ import type { Blog } from 'contentlayer/generated'
 import Link from '@/components/tools/Link'
 import Pagination from '@/components/layouts/Pagination'
 import PostCard from '@/components/blog/PostCard'
+import PostCard2 from '@/components/blog/PostCard2'
 import PostCategories from '@/components/blog/PostCategories'
 import PostTags from '@/components/blog/PostTags'
+
+import siteMetadata from '@/data/siteMetadata'
+// import siteMetadata from '@/data/siteMetadata'
 
 interface PaginationProps {
   totalPages: number
@@ -29,6 +33,7 @@ export default function ListLayoutWithTags({
   pagination,
 }: ListLayoutProps) {
   const pathname = usePathname()
+  const { blog } = siteMetadata
 
   const displayPosts = initialDisplayPosts.length > 0 ? initialDisplayPosts : posts
 
@@ -60,10 +65,15 @@ export default function ListLayoutWithTags({
           </div>
           {/* Main Content */}
           <div>
-            <ul>
-              {displayPosts.map((post) => {
-                return <PostCard post={post} key={post.title} />
-              })}
+            <ul className={blog.POST_CARD_TYPE == 'type2' ? 'grid gap-6 lg:grid-cols-2' : ''}>
+              {blog.POST_CARD_TYPE == '' &&
+                displayPosts.map((post) => {
+                  return <PostCard post={post} key={post.title} />
+                })}
+              {blog.POST_CARD_TYPE == 'type2' &&
+                displayPosts.map((post) => {
+                  return <PostCard2 post={post} key={post.title} />
+                })}
             </ul>
             {pagination && pagination.totalPages > 1 && (
               <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />

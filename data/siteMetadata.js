@@ -24,6 +24,7 @@ const siteMetadata = {
   blog: {
     MAX_DISPLAY: 3,
     POSTS_PER_PAGE: 10,
+    POST_CARD_TYPE: 'type2', // '' (for default) or type2
   },
   analytics: {
     // If you want to use an analytics provider you have to add it to the

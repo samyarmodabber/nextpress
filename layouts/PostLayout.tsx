@@ -87,18 +87,13 @@ export default function PostLayout({
                         />
                       )}
                       <dl className="whitespace-nowrap text-sm font-medium leading-5">
-                        <dt className="sr-only">Name</dt>
-                        <dd className="text-gray-900 dark:text-gray-100">{author.name}</dd>
-                        <dt className="sr-only">Twitter</dt>
                         <dd>
-                          {author.twitter && (
+                          {author.path && (
                             <Link
-                              href={author.twitter}
+                              href={`/${author.path}`}
                               className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                             >
-                              {author.twitter
-                                .replace('https://twitter.com/', '@')
-                                .replace('https://x.com/', '@')}
+                              {author.name}
                             </Link>
                           )}
                         </dd>

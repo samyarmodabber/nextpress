@@ -1,14 +1,18 @@
 import LastPosts from '@/components/landing/LastPosts'
 import Newslatter from '@/components/tools/Newslatter'
-import Slider from '@/components/tools/slider/Slider'
-import { images } from '@/data/sliders/demo'
+
+import Carousel from '@/components/landing/Carousel'
+import { slides } from '@/data/carousel/demo'
+
+import siteMetadata from '@/data/siteMetadata'
 
 export default function Home({ posts }) {
+  const { showLatestPosts, showCarousel, showNewsletter } = siteMetadata.landingPage
   return (
     <>
-      <Slider images={images} />
-      <LastPosts posts={posts} />
-      <Newslatter />
+      {showCarousel && <Carousel slides={slides} />}
+      {showLatestPosts && <LastPosts posts={posts} />}
+      {showNewsletter && <Newslatter />}
     </>
   )
 }

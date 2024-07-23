@@ -1,0 +1,70 @@
+---
+title: 'Introducing the Carousel Component'
+date: 2024-07-21T15:32:14Z
+lastmod: '2024-07-22'
+authors: ['samyar']
+tags: ['next-js', 'tailwind', 'guide']
+categories: ['NextPressJS']
+images: ['https://picsum.photos/1200/600']
+summary: 'An overview of the new features on NextPress'
+bibliography: references-data.bib
+layout: PostLayout
+draft: false
+---
+
+I am excited to announce a new addition to our codebase: the Carousel component. This component is designed to seamlessly integrate into your application, providing a dynamic and visually appealing way to showcase a series of slides. Below, we'll walk through the key features and how to use of this new component.
+
+## Key Features:
+
+1. **Automatic Sliding**: The Carousel component automatically transitions between slides at a specified interval, enhancing user engagement.
+2. **Manual Navigation**: Users can manually navigate through the slides using previous and next buttons.
+3. **Responsive Design**: The component is designed to be fully responsive, ensuring a great user experience across all device sizes.
+4. **Customizable**: You can easily customize the content of each slide, including images, titles, descriptions, and links.
+
+## How to Use the Carousel Component:
+
+### Import the Component:
+
+```jsx:YourComponent.jsx
+import Carousel from '@/components/Carousel'
+```
+
+### Provide Slides Data:
+
+Create an array of slide objects with **id**, **src**, **alt**, **link_src**, **title**, and **description** properties.
+
+```ts:data/carousel/demo.ts
+
+export const slides = [
+  {
+    id: 1,
+    src: '/static/images/carousel/380-1920x700.jpg',
+    title: 'Blog',
+    description: 'Visit our posts on my Blog ',
+    alt: 'blog',
+    link_src: '/blog',
+    link_text: 'Blog',
+  },
+  {
+    id: 2,
+    src: '/static/images/carousel/443-1920x700.jpg',
+    title: 'Projects',
+    description: 'See list of projects!',
+    alt: 'projects',
+    link_src: '/projects',
+    link_text: 'Projects',
+  }]
+
+```
+
+### Include the Component in Your Page:
+
+Pass **slides** object and **interval** to the component.
+
+```jsx:YourComponent.jsx
+
+<Carousel slides={slides} interval={3000} />
+
+```
+
+The Carousel component is now ready to be integrated into your Next.js project, providing a sleek and interactive element to display your content. Feel free to customize the styling and behavior to match your application’s needs. Happy coding!

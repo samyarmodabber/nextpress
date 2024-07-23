@@ -6,7 +6,6 @@ export const slides = [
     description: 'Visit our posts on my Blog ',
     alt: 'blog',
     link_src: '/blog',
-    link_text: 'Blog',
   },
   {
     id: 2,
@@ -15,7 +14,6 @@ export const slides = [
     description: 'See list of projects!',
     alt: 'projects',
     link_src: '/projects',
-    link_text: 'Projects',
   },
   {
     id: 3,
@@ -24,7 +22,6 @@ export const slides = [
     description: 'See list of tags!',
     alt: 'tags',
     link_src: '/tags',
-    link_text: 'Tags',
   },
   {
     id: 4,
@@ -33,6 +30,5 @@ export const slides = [
     description: 'See list of categories!',
     alt: 'categories',
     link_src: '/categories',
-    link_text: 'categories',
   },
 ]

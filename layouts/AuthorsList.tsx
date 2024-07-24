@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Authors } from 'contentlayer/generated'
-import AuthorCard from '@/components/layouts/AuthorCard'
+import AuthorCard from '@/components/layouts/Author/AuthorCard'
 
 interface AuthorsListProps {
   authors: CoreContent<Authors>[]
@@ -12,7 +12,8 @@ interface AuthorsListProps {
 export default function AuthorsList({ authors }: AuthorsListProps) {
   const [searchValue, setSearchValue] = useState('')
   const filteredAuthors = authors.filter((author) => {
-    const searchContent = author.name + author.company + author.email
+    const searchContent =
+      author.name + author.company + author.email + author.occupation + author.website
     return searchContent.toLowerCase().includes(searchValue.toLowerCase())
   })
 
@@ -50,12 +51,12 @@ export default function AuthorsList({ authors }: AuthorsListProps) {
             </svg>
           </div>
         </div>
+        {!filteredAuthors.length && (
+          <div className="flex items-center justify-center text-center">
+            <p className="text-6xl font-bold text-gray-700">The author was not found.</p>
+          </div>
+        )}
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {!filteredAuthors.length && (
-            <div className="flex items-center justify-center text-center">
-              <p className="text-3xl font-bold text-gray-700">Author not found</p>
-            </div>
-          )}
           {displayAuthors.map((author) => {
             return (
               <li key={author.slug} className="py-4">

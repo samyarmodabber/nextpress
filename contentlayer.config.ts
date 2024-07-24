@@ -23,6 +23,7 @@ import rehypePrismPlus from 'rehype-prism-plus'
 import rehypePresetMinify from 'rehype-preset-minify'
 import siteMetadata from './data/siteMetadata'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer.js'
+import { Facebook } from './components/social-icons/icons'
 
 const root = process.cwd()
 const isProduction = process.env.NODE_ENV === 'production'
@@ -151,9 +152,15 @@ export const Authors = defineDocumentType(() => ({
     occupation: { type: 'string' },
     company: { type: 'string' },
     email: { type: 'string' },
-    twitter: { type: 'string' },
     linkedin: { type: 'string' },
     github: { type: 'string' },
+    twitter: { type: 'string' },
+    coverImage: { type: 'string' },
+    website: { type: 'string' },
+    instagram: { type: 'string' },
+    youtube: { type: 'string' },
+    threads: { type: 'string' },
+    facebook: { type: 'string' },
     layout: { type: 'string' },
   },
   computedFields,

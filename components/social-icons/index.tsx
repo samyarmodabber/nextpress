@@ -9,10 +9,12 @@ import {
   Mastodon,
   Threads,
   Instagram,
+  Website,
 } from './icons'
 
 const components = {
   mail: Mail,
+  website: Website,
   github: Github,
   facebook: Facebook,
   youtube: Youtube,

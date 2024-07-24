@@ -20,7 +20,7 @@ const Header = () => {
                 <div className="hidden h-6 text-2xl font-semibold lg:block">
                   {siteMetadata.headerTitle}
                 </div>
-                <p className="hidden text-sm leading-7 text-gray-500 dark:text-gray-400 lg:block">
+                <p className="hidden text-xs leading-7 text-gray-500 dark:text-gray-400 lg:block">
                   {siteMetadata.description}
                 </p>
               </div>

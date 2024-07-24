@@ -1,16 +1,16 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Next.js Starter Blog',
-  author: 'Tails Azimuth',
-  headerTitle: 'TailwindBlog',
-  description: 'A blog created with Next.js and Tailwind.css',
+  title: 'NextPress Starter Blog',
+  author: 'Samyar Modabber',
+  headerTitle: 'NextPress Website',
+  description: 'A website created with Next.js and Tailwind.css',
   language: 'en-us',
   locale: 'en-US',
   theme: 'system', // system, dark or light
   email: 'address@yoursite.com',
-  siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
-  siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',
-  siteLogo: '/static/images/logo.png',
+  siteUrl: 'https://nextpress.vercel.app',
+  siteRepo: 'https://github.com/samyarmodabber/nextpress',
+  siteLogo: '/static/images/site/NextPress-logo.png',
   socialBanner: '/static/images/twitter-card.png',
   github: 'https://github.com',
   x: 'https://x.com/',

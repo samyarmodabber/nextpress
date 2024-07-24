@@ -3,7 +3,7 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 import Link from '@/components/tools/Link'
-import headerNavLinks from '@/data/headerNavLinks'
+import headerNavLinks from '@/data/menus/headerNavLinks'
 
 const MobileNav = () => {
   const [navShow, setNavShow] = useState(false)

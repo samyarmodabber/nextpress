@@ -9,7 +9,7 @@ import { SearchProvider, SearchConfig } from 'pliny/search'
 
 import siteMetadata from '@/data/siteMetadata'
 
-import Header from '@/components/layouts/Header'
+import Header from '@/components/layouts/Header/Main'
 import SectionContainer from '@/components/layouts/SectionContainer'
 import Footer from '@/components/layouts/Footer'
 

@@ -1,10 +1,12 @@
 import siteMetadata from '@/data/siteMetadata'
-import headerNavLinks from '@/data/headerNavLinks'
+import headerNavLinks from '@/data/menus/headerNavLinks'
 import Logo from '@/data/logo.svg'
 import Link from '@/components/tools/Link'
+
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
 import SearchButton from './SearchButton'
+import CommandPalette from './CommandPalette'
 
 const Header = () => {
   return (
@@ -45,6 +47,7 @@ const Header = () => {
           ))}
         <SearchButton />
         <ThemeSwitch />
+        <CommandPalette />
         <MobileNav />
       </div>
     </header>

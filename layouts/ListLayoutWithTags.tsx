@@ -14,7 +14,6 @@ import PostCategories from '@/components/blog/PostCategories'
 import PostTags from '@/components/blog/PostTags'
 
 import siteMetadata from '@/data/siteMetadata'
-// import siteMetadata from '@/data/siteMetadata'
 
 interface PaginationProps {
   totalPages: number

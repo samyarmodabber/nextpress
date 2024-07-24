@@ -123,7 +123,7 @@ export default function PostLayout({
             </div>
             <footer>
               <div className="divide-gray-200 text-sm font-medium leading-5 dark:divide-gray-700 xl:col-start-1 xl:row-start-2 xl:divide-y">
-                {categories && (
+                {categories && categories.length > 0 && (
                   <div className="py-4 xl:py-8">
                     <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
                       Categories
@@ -135,7 +135,7 @@ export default function PostLayout({
                     </div>
                   </div>
                 )}
-                {tags && (
+                {tags && tags.length > 0 && (
                   <div className="py-4 xl:py-8">
                     <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
                       Tags
@@ -171,25 +171,27 @@ export default function PostLayout({
                     )}
                   </div>
                 )}
-              </div>
-              <div className="pt-4 xl:pt-8">
-                <Link
-                  href={`/${basePath}`}
-                  className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                  aria-label="Back to the blog"
-                >
-                  &larr; Back to the blog
-                </Link>
-                <div className="sticky top-0 z-50">
-                  {toc && (
+
+                <div className="divide-gray-200 py-4 xl:divide-y xl:py-8">
+                  <Link
+                    href={`/${basePath}`}
+                    className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                    aria-label="Back to the blog"
+                  >
+                    &larr; Back to the blog
+                  </Link>
+                </div>
+
+                {toc && (
+                  <div className="sticky top-0 z-40 divide-gray-200 py-4 xl:divide-y xl:py-8">
                     <TOCInLine
                       toc={toc}
                       asDisclosure={true}
                       toHeading={3}
                       title="Table of Content"
                     />
-                  )}
-                </div>
+                  </div>
+                )}
               </div>
             </footer>
           </div>

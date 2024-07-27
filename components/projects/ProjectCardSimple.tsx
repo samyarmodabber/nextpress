@@ -1,7 +1,7 @@
-import Image from '@/components/tools/Image'
 import Link from '@/components/tools/Link'
+import Image from 'next/image'
 
-const Card = ({ title, description, imgSrc, href }) => (
+const ProjectCardSimple = ({ title, description, imgSrc, href }) => (
   <div className="md p-4 md:w-1/2">
     <div
       className={`${
@@ -11,22 +11,10 @@ const Card = ({ title, description, imgSrc, href }) => (
       {imgSrc &&
         (href ? (
           <Link href={href} aria-label={`Link to ${title}`}>
-            <Image
-              alt={title}
-              src={imgSrc}
-              className="object-cover object-center md:h-36 lg:h-48"
-              width={544}
-              height={306}
-            />
+            <Image alt={title} src={imgSrc} className="aspect-auto" width={1600} height={900} />
           </Link>
         ) : (
-          <Image
-            alt={title}
-            src={imgSrc}
-            className="object-cover object-center md:h-36 lg:h-48"
-            width={544}
-            height={306}
-          />
+          <Image alt={title} src={imgSrc} className="aspect-auto" width={1600} height={900} />
         ))}
       <div className="p-6">
         <h2 className="mb-3 text-2xl font-bold leading-8 tracking-tight">
@@ -53,4 +41,4 @@ const Card = ({ title, description, imgSrc, href }) => (
   </div>
 )
 
-export default Card
+export default ProjectCardSimple

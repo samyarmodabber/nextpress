@@ -16,11 +16,12 @@ const PostCard = ({ post }) => {
             src={
               Array.isArray(images) && images.length > 0
                 ? images[0]
-                : '/static/images/twitter-card.png'
+                : siteMetadata.blog.DEFAULT_IMAGE_POST
             }
+            className="aspect-video sm:pr-5"
+            width={1600}
+            height={900}
             alt={title}
-            width={400}
-            height={300}
           />
         </Link>
       </div>

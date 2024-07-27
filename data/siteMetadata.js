@@ -23,8 +23,9 @@ const siteMetadata = {
   mastodon: 'https://mastodon.social',
   blog: {
     MAX_DISPLAY: 3,
-    POSTS_PER_PAGE: 10,
+    POSTS_PER_PAGE: 20,
     POST_CARD_TYPE: 'type2', // '' (for default) or type2
+    DEFAULT_IMAGE_POST: '/static/images/twitter-card.png',
   },
   landingPage: {
     showLatestPosts: true,

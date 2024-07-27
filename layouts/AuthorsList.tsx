@@ -26,7 +26,7 @@ export default function AuthorsList({ authors }: AuthorsListProps) {
         <div className=" space-y-2 pb-8 pt-6 md:space-y-5">
           <div className="relative mx-auto max-w-lg">
             <label>
-              <span className="sr-only">Search articles</span>
+              <span className="sr-only">Search Authors ... </span>
               <input
                 aria-label="Search articles"
                 type="text"

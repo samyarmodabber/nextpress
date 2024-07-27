@@ -38,46 +38,44 @@ export default function ListLayoutWithTags({
 
   return (
     <>
-      <div>
-        <div className="pb-6 pt-6">
-          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:hidden sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            {title}
-          </h1>
-        </div>
-        <div className="flex sm:space-x-12">
-          <div className="hidden h-full max-h-screen min-w-[280px] max-w-[280px] flex-wrap overflow-auto rounded bg-gray-50 pt-5 shadow-md dark:bg-gray-900/70 dark:shadow-gray-800/40 sm:flex">
-            <div className="px-6 py-4">
-              {pathname.startsWith('/blog') ? (
-                <h3 className="font-bold uppercase text-primary-500">All Posts</h3>
-              ) : (
-                <Link
-                  href={`/blog`}
-                  className="font-bold uppercase text-gray-700 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500"
-                >
-                  All Posts
-                </Link>
-              )}
-              <PostCategories />
-              <br />
-              <PostTags />
-            </div>
-          </div>
-          {/* Main Content */}
-          <div>
-            <ul className={blog.POST_CARD_TYPE == 'type2' ? 'grid gap-6 lg:grid-cols-2' : ''}>
-              {blog.POST_CARD_TYPE == '' &&
-                displayPosts.map((post) => {
-                  return <PostCard post={post} key={post.title} />
-                })}
-              {blog.POST_CARD_TYPE == 'type2' &&
-                displayPosts.map((post) => {
-                  return <PostCard2 post={post} key={post.title} />
-                })}
-            </ul>
-            {pagination && pagination.totalPages > 1 && (
-              <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
+      <div className="pb-6 pt-6">
+        <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:hidden sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+          {title}
+        </h1>
+      </div>
+      <div className="flex sm:space-x-12">
+        <div className="hidden h-full max-h-screen min-w-[280px] max-w-[280px] flex-wrap overflow-auto rounded bg-gray-50 pt-5 shadow-md dark:bg-gray-900/70 dark:shadow-gray-800/40 sm:flex">
+          <div className="px-6 py-4">
+            {pathname.startsWith('/blog') ? (
+              <h3 className="font-bold uppercase text-primary-500">All Posts</h3>
+            ) : (
+              <Link
+                href={`/blog`}
+                className="font-bold uppercase text-gray-700 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500"
+              >
+                All Posts
+              </Link>
             )}
+            <PostCategories />
+            <br />
+            <PostTags />
           </div>
+        </div>
+        {/* Main Content */}
+        <div>
+          <ul className={blog.POST_CARD_TYPE == 'type2' ? 'grid gap-6 lg:grid-cols-2' : ''}>
+            {blog.POST_CARD_TYPE == '' &&
+              displayPosts.map((post) => {
+                return <PostCard post={post} key={post.title} />
+              })}
+            {blog.POST_CARD_TYPE == 'type2' &&
+              displayPosts.map((post) => {
+                return <PostCard2 post={post} key={post.title} />
+              })}
+          </ul>
+          {pagination && pagination.totalPages > 1 && (
+            <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
+          )}
         </div>
       </div>
     </>

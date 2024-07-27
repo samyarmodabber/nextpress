@@ -25,7 +25,7 @@ export const AuthorHeader = ({ author }) => {
       <div
         className="mb-20 mt-5 flex w-full justify-center rounded-xl"
         style={{
-          aspectRatio: '4/1',
+          aspectRatio: '7/2',
           background: `url(${coverImage ? coverImage : siteMetadata.socialBanner})`,
           backgroundSize: 'cover',
         }}

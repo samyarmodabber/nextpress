@@ -29,7 +29,7 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
     images && images.length > 0 ? images[0] : 'https://picsum.photos/seed/picsum/800/400'
 
   return (
-    <SectionContainer>
+    <>
       <ScrollTopAndComment />
       <article>
         <div>
@@ -77,6 +77,6 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
           </footer>
         </div>
       </article>
-    </SectionContainer>
+    </>
   )
 }

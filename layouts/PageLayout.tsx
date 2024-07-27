@@ -20,12 +20,12 @@ export default function SinglePage({ content, children }: LayoutProps) {
   const { slug, title, image } = content
 
   return (
-    <SectionContainer>
+    <>
       <ScrollTopAndComment />
       <article>
         <div>
-          <div className="space-y-1 pb-10 text-center dark:border-gray-700">
-            {image ? (
+          <div className="divide-y divide-gray-200 dark:divide-gray-700">
+            {image && image.length > 0 ? (
               <div className="relative w-full">
                 <Bleed>
                   <div className="relative aspect-[4/1] w-full">
@@ -39,12 +39,14 @@ export default function SinglePage({ content, children }: LayoutProps) {
                 </Bleed>
               </div>
             ) : (
-              <PageTitle>{title}</PageTitle>
+              <div className="space-y-1 pb-10 text-center dark:border-gray-700">
+                <PageTitle>{title}</PageTitle>
+              </div>
             )}
           </div>
           <div className="prose max-w-none py-4 dark:prose-invert">{children}</div>
         </div>
       </article>
-    </SectionContainer>
+    </>
   )
 }

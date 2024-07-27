@@ -49,7 +49,7 @@ export default function PostLayout({
   const basePath = path.split('/')[0]
 
   return (
-    <SectionContainer>
+    <>
       <ScrollTopAndComment />
       <article>
         <div className="xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700">
@@ -123,6 +123,15 @@ export default function PostLayout({
             </div>
             <footer>
               <div className="divide-gray-200 text-sm font-medium leading-5 dark:divide-gray-700 xl:col-start-1 xl:row-start-2 xl:divide-y">
+                <div className="divide-gray-200 py-4 xl:divide-y xl:py-8">
+                  <Link
+                    href={`/${basePath}`}
+                    className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                    aria-label="Back to the blog"
+                  >
+                    &larr; Back to the blog
+                  </Link>
+                </div>
                 {categories && categories.length > 0 && (
                   <div className="py-4 xl:py-8">
                     <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
@@ -171,17 +180,6 @@ export default function PostLayout({
                     )}
                   </div>
                 )}
-
-                <div className="divide-gray-200 py-4 xl:divide-y xl:py-8">
-                  <Link
-                    href={`/${basePath}`}
-                    className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                    aria-label="Back to the blog"
-                  >
-                    &larr; Back to the blog
-                  </Link>
-                </div>
-
                 {toc && (
                   <div className="sticky top-0 z-40 divide-gray-200 py-4 xl:divide-y xl:py-8">
                     <TOCInLine
@@ -197,6 +195,6 @@ export default function PostLayout({
           </div>
         </div>
       </article>
-    </SectionContainer>
+    </>
   )
 }

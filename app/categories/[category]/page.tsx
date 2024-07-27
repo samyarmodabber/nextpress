@@ -5,7 +5,7 @@ import { allBlogs } from 'contentlayer/generated'
 
 import categoryData from 'app/data/category-data.json'
 import siteMetadata from '@/data/siteMetadata'
-import ListLayout from '@/layouts/ListLayoutWithTags'
+import ListLayout from '@/layouts/posts/ListLayoutWithTags'
 import { genPageMetadata } from 'app/seo'
 
 export async function generateMetadata({

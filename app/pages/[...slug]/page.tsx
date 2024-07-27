@@ -9,7 +9,7 @@ import type { Pages } from 'contentlayer/generated'
 import siteMetadata from '@/data/siteMetadata'
 import { components } from '@/components/markdown/MDXComponents'
 
-import PageLayout from '@/layouts/PageLayout'
+import PageLayout from '@/layouts/posts/PageLayout'
 const defaultLayout = 'PageLayout'
 const layouts = {
   PageLayout,

@@ -7,7 +7,7 @@ import type { Blog } from 'contentlayer/generated'
 
 // Components
 import Link from '@/components/tools/Link'
-import Pagination from '@/components/layouts/Pagination'
+import Pagination from '@/components/layouts-parts/Pagination'
 import PostCard from '@/components/blog/PostCard'
 import PostCard2 from '@/components/blog/PostCard2'
 import PostCategories from '@/components/blog/PostCategories'

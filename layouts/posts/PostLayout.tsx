@@ -8,8 +8,8 @@ import Comments from '@/components/blog/Comments'
 import Tag from '@/components/blog/Tag'
 import Category from '@/components/blog/Category'
 
-import SectionContainer from '@/components/layouts/SectionContainer'
-import ScrollTopAndComment from '@/components/layouts/ScrollTopAndComment'
+import SectionContainer from '@/components/layouts-parts/SectionContainer'
+import ScrollTopAndComment from '@/components/layouts-parts/ScrollTopAndComment'
 
 import Link from '@/components/tools/Link'
 import Image from '@/components/tools/Image'

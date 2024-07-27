@@ -1,6 +1,6 @@
 import { allAuthors } from 'contentlayer/generated'
 import { genPageMetadata } from 'app/seo'
-import AuthorsList from '@/layouts/AuthorsList'
+import AuthorsList from '@/layouts/authors/AuthorsList'
 
 export const metadata = genPageMetadata({ title: 'About' })
 

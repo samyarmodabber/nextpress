@@ -10,7 +10,7 @@ import siteMetadata from '@/data/siteMetadata'
 
 import Link from '@/components/tools/Link'
 import Tag from '@/components/blog/Tag'
-import Pagination from '@/components/layouts/Pagination'
+import Pagination from '@/components/layouts-parts/Pagination'
 
 interface PaginationProps {
   totalPages: number

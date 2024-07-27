@@ -8,8 +8,8 @@ import Image from '@/components/tools/Image'
 import PageTitle from '@/components/tools/PageTitle'
 
 // layouts
-import SectionContainer from '@/components/layouts/SectionContainer'
-import ScrollTopAndComment from '@/components/layouts/ScrollTopAndComment'
+import SectionContainer from '@/components/layouts-parts/SectionContainer'
+import ScrollTopAndComment from '@/components/layouts-parts/ScrollTopAndComment'
 
 interface LayoutProps {
   content: CoreContent<Pages>

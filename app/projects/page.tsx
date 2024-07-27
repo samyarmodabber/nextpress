@@ -1,5 +1,5 @@
 import projectsData from '@/data/projects/projectsData'
-import ProjectsList from '@/layouts/ProjectsList'
+import ProjectsList from '@/layouts/projects/ProjectsList'
 
 import { genPageMetadata } from 'app/seo'
 

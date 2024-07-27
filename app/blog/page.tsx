@@ -2,7 +2,7 @@ import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
 import { allBlogs } from 'contentlayer/generated'
 import { genPageMetadata } from 'app/seo'
 
-import ListLayout from '@/layouts/ListLayoutWithTags'
+import ListLayout from '@/layouts/posts/ListLayoutWithTags'
 import siteMetadata from '@/data/siteMetadata'
 
 export const metadata = genPageMetadata({ title: 'Blog' })

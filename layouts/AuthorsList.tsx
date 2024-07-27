@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Authors } from 'contentlayer/generated'
-import AuthorCard from '@/components/layouts/Author/AuthorCard'
+import AuthorCard from '@/components/authors/AuthorCard'
 
 interface AuthorsListProps {
   authors: CoreContent<Authors>[]

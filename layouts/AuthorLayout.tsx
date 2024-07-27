@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import type { Authors } from 'contentlayer/generated'
-import { AuthorHeader } from '@/components/layouts/Author/AuthorHeader'
+import { AuthorHeader } from '@/components/authors/AuthorHeader'
 
 interface Props {
   children: ReactNode

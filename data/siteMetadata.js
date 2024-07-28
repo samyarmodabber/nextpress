@@ -10,7 +10,8 @@ const siteMetadata = {
   email: 'address@yoursite.com',
   siteUrl: 'https://nextpress.vercel.app',
   siteRepo: 'https://github.com/samyarmodabber/nextpress',
-  siteLogo: '/static/images/site/logo.png',
+  siteLogoSVG: '/static/images/site/logo.svg',
+  siteLogoPNG: '/static/images/site/logo.png',
   socialBanner: '/static/images/twitter-card.png',
   github: 'https://github.com/samyarmodabber',
   x: '',
@@ -65,7 +66,7 @@ const siteMetadata = {
     // content security policy in the `next.config.js` file.
     // Select a provider and use the environment variables associated to it
     // https://vercel.com/docs/environment-variables
-    provider: '', // supported providers: giscus, utterances, disqus, '' for unactive
+    provider: 'disqus', // supported providers: giscus, utterances, disqus, '' for unactive
     giscusConfig: {
       // Visit the link below, and follow the steps in the 'configuration' section
       // https://giscus.app/

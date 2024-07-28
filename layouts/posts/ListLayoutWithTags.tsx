@@ -15,6 +15,7 @@ import PostTags from '@/components/blog/PostTags'
 
 import siteMetadata from '@/data/siteMetadata'
 import PageTitle from '@/components/tools/PageTitle'
+import ScrollTopAndComment from '@/components/layouts-parts/ScrollTopAndComment'
 
 interface PaginationProps {
   totalPages: number
@@ -28,7 +29,6 @@ interface ListLayoutProps {
 }
 export default function ListLayoutWithTags({
   posts,
-  title,
   initialDisplayPosts = [],
   pagination,
 }: ListLayoutProps) {
@@ -39,6 +39,7 @@ export default function ListLayoutWithTags({
 
   return (
     <>
+      <ScrollTopAndComment showComments={false} />
       <PageTitle>Blog</PageTitle>
       <div className="flex sm:space-x-12">
         <div className="hidden h-full max-h-screen min-w-[280px] max-w-[280px] flex-wrap overflow-auto rounded bg-gray-50 pt-5 shadow-md dark:bg-gray-900/70 dark:shadow-gray-800/40 sm:flex">

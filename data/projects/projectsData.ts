@@ -22,6 +22,12 @@ const projectsData: Project[] = [
     imgSrc: '/static/images/time-machine.jpg',
     href: '/blog/tailwind-blog/the-time-machine',
   },
+  {
+    title: 'NextPress',
+    description: `A website template by extention of tailwindBlog.`,
+    imgSrc: '/static/images/twitter-card.png',
+    href: '/blog/tailwind-blog/the-time-machine',
+  },
 ]
 
 export default projectsData

@@ -7,7 +7,7 @@ export default function AuthorCard({ author }) {
   const { name, avatar, occupation, company, email, twitter, linkedin, github, slug } = author
 
   return (
-    <div className="flex flex-col items-center space-x-2 pt-8">
+    <li className="flex flex-col items-center space-x-2 pt-8">
       <CustomLink href={'/authors/' + slug}>
         {avatar && (
           <Image
@@ -30,6 +30,6 @@ export default function AuthorCard({ author }) {
         <SocialIcon kind="github" href={github} />
         <SocialIcon kind="linkedin" href={linkedin} />
       </div>
-    </div>
+    </li>
   )
 }

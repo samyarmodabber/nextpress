@@ -121,6 +121,7 @@ export const Blog = defineDocumentType(() => ({
     images: { type: 'json' },
     authors: { type: 'list', of: { type: 'string' } },
     layout: { type: 'string' },
+    dir: { type: 'string' },
     bibliography: { type: 'string' },
     canonicalUrl: { type: 'string' },
   },
@@ -162,6 +163,7 @@ export const Authors = defineDocumentType(() => ({
     threads: { type: 'string' },
     facebook: { type: 'string' },
     layout: { type: 'string' },
+    dir: { type: 'string' },
   },
   computedFields,
 }))
@@ -178,6 +180,7 @@ export const Pages = defineDocumentType(() => ({
     summary: { type: 'string' },
     image: { type: 'string' },
     layout: { type: 'string' },
+    dir: { type: 'string' },
   },
   computedFields,
 }))

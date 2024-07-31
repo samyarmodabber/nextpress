@@ -24,7 +24,7 @@ interface LayoutProps {
 }
 
 export default function PostMinimal({ content, next, prev, children }: LayoutProps) {
-  const { slug, title, images } = content
+  const { slug, title, images, dir } = content
   const displayImage =
     images && images.length > 0 ? images[0] : 'https://picsum.photos/seed/picsum/800/400'
 
@@ -43,7 +43,9 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
               <PageTitle>{title}</PageTitle>
             </div>
           </div>
-          <div className="prose max-w-none py-4 dark:prose-invert">{children}</div>
+          <div dir={dir ? dir : 'ltr'} className="prose max-w-none py-4 dark:prose-invert">
+            {children}
+          </div>
           {siteMetadata.comments?.provider && (
             <div className="pb-6 pt-6 text-center text-gray-700 dark:text-gray-300" id="comment">
               <Comments slug={slug} />

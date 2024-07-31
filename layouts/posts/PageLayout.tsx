@@ -17,7 +17,7 @@ interface LayoutProps {
 }
 
 export default function SinglePage({ content, children }: LayoutProps) {
-  const { slug, title, image } = content
+  const { slug, title, image, dir } = content
 
   return (
     <>
@@ -44,7 +44,9 @@ export default function SinglePage({ content, children }: LayoutProps) {
               </div>
             )}
           </div>
-          <div className="prose max-w-none py-4 dark:prose-invert">{children}</div>
+          <div dir={dir ? dir : 'ltr'} className="prose max-w-none py-4 dark:prose-invert">
+            {children}
+          </div>
         </div>
       </article>
     </>

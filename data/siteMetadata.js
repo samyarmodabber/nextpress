@@ -5,6 +5,7 @@ const siteMetadata = {
   headerTitle: 'NextPress Website',
   description: 'A website created with Next.js and Tailwind.css',
   language: 'en-us',
+  dir: 'ltr',
   locale: 'en-US',
   theme: 'system', // system, dark or light
   email: 'address@yoursite.com',
@@ -13,7 +14,7 @@ const siteMetadata = {
   siteLogoSVG: '/static/images/site/logo.svg',
   siteLogoPNG: '/static/images/site/logo.png',
   socialBanner: '/static/images/twitter-card.png',
-  github: 'https://github.com/samyarmodabber',
+  github: 'https://github.com',
   x: '',
   // twitter: 'https://twitter.com/Twitter',
   facebook: 'https://facebook.com',

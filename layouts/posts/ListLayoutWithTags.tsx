@@ -60,19 +60,21 @@ export default function ListLayoutWithTags({
           </div>
         </div>
         {/* Main Content */}
-        <ul className={blog.POST_CARD_TYPE == 'type2' ? 'grid gap-6 lg:grid-cols-2' : ''}>
-          {blog.POST_CARD_TYPE == '' &&
-            displayPosts.map((post) => {
-              return <PostCard post={post} key={post.title} />
-            })}
-          {blog.POST_CARD_TYPE == 'type2' &&
-            displayPosts.map((post) => {
-              return <PostCard2 post={post} key={post.title} />
-            })}
-        </ul>
-        {pagination && pagination.totalPages > 1 && (
-          <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
-        )}
+        <div className="flex flex-col">
+          <ul className={blog.POST_CARD_TYPE == 'type2' ? 'grid gap-6 lg:grid-cols-2' : ''}>
+            {blog.POST_CARD_TYPE == '' &&
+              displayPosts.map((post) => {
+                return <PostCard post={post} key={post.title} />
+              })}
+            {blog.POST_CARD_TYPE == 'type2' &&
+              displayPosts.map((post) => {
+                return <PostCard2 post={post} key={post.title} />
+              })}
+          </ul>
+          {pagination && pagination.totalPages > 1 && (
+            <Pagination currentPage={pagination.currentPage} totalPages={pagination.totalPages} />
+          )}
+        </div>
       </div>
     </>
   )

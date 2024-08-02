@@ -6,7 +6,7 @@ categories: ['next js', 'markdown']
 draft: false
 summary: 'How to derive the OLS Estimator with matrix notation and a tour of math typesetting using markdown with the help of KaTeX.'
 authors: ['tails']
-images: ['/static/images/twitter-card-TB.png']
+images: ['/static/images/blog/twitter-card-TB.png']
 ---
 
 # Introduction
@@ -60,11 +60,11 @@ The matrix of regressors $\mathbf{X}$ is a $n \times k$ matrix (or each row is a
 ```latex
 \mathbf{X} = \left[\begin{array}
   {ccccc}
-  x_{11} & . & . & . & x_{1k} \\
+  x_{1,1} & . & . & . & x_{1,k} \\
   . & . & . & . & .  \\
   . & . & . & . & .  \\
   . & . & . & . & .  \\
-  x_{n1} & . & . & . & x_{nn}
+  x_{n,1} & . & . & . & x_{n,n}
 \end{array}\right] =
 \left[\begin{array}
   {c}
@@ -79,7 +79,7 @@ The matrix of regressors $\mathbf{X}$ is a $n \times k$ matrix (or each row is a
 $$
 \mathbf{X} = \left[\begin{array}
   {ccccc}
-  x_{11} & . & . & . & x_{1k} \\
+  x_{1,1} & . & . & . & x_{1,k} \\
   . & . & . & . & .  \\
   . & . & . & . & .  \\
   . & . & . & . & .  \\

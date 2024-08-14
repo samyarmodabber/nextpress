@@ -27,9 +27,9 @@ const siteMetadata = {
   instagram: 'https://www.instagram.com',
   mastodon: 'https://mastodon.social',
   blog: {
-    MAX_DISPLAY: 3,
-    POSTS_PER_PAGE: 20,
-    POST_CARD_TYPE: 'type2', // '' (for default) or type2
+    MAX_DISPLAY: 2, //For landing page
+    POSTS_PER_PAGE: 10,
+    POST_CARD_TYPE: 'type2', // '' (for default) or type2 for /blog
     DEFAULT_IMAGE_POST: '/static/images/twitter-card.png',
     SHOW_TOC: false, // Show table of content on Post
   },

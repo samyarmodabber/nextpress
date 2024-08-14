@@ -42,9 +42,9 @@ const Hero = ({ heroData }) => {
             My name is {siteMetadata.author}. <br /> I am a {siteMetadata.occupation} and expert in{' '}
             <div className="inline-grid h-9 overflow-hidden sm:h-14">
               <div ref={scope}>
-                {heroData.map(({ text, className }, i) => (
-                  <div className={className} key={i}>
-                    {text}.
+                {heroData.map((item) => (
+                  <div className={item.className} key={item.text}>
+                    {item.text}.
                   </div>
                 ))}
               </div>

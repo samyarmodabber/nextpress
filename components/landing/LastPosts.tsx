@@ -2,6 +2,7 @@ import { formatDate } from 'pliny/utils/formatDate'
 import Link from '@/components/tools/Link'
 import Tag from '@/components/blog/Tag'
 import siteMetadata from '@/data/siteMetadata'
+import Image from 'next/image'
 
 const LastPosts = ({ posts }) => {
   return (
@@ -14,17 +15,23 @@ const LastPosts = ({ posts }) => {
       <ul className="divide-y divide-gray-200 dark:divide-gray-700">
         {!posts.length && 'No posts found.'}
         {posts.slice(0, siteMetadata.blog.MAX_DISPLAY).map((post) => {
-          const { slug, date, title, summary, tags } = post
+          const { slug, date, title, summary, tags, images } = post
           return (
             <li key={slug} className="py-12">
-              <article>
-                <div className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
-                  <dl>
-                    <dt className="sr-only">Published on</dt>
-                    <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                      <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
-                    </dd>
-                  </dl>
+              <article className="flex flex-col sm:flex-row">
+                {/* Insert image here */}
+                <div className="relative w-full flex-shrink-0 overflow-hidden rounded-lg px-4 py-2 md:w-1/3 lg:w-1/4">
+                  <Link href={`/blog/${slug}`} className="text-gray-900 dark:text-gray-100">
+                    <Image
+                      width={1280}
+                      height={832}
+                      src={images[0]}
+                      alt={title}
+                      className="rounded-lg"
+                    />
+                  </Link>
+                </div>
+                <div className="flex-1 space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
                   <div className="space-y-5 xl:col-span-3">
                     <div className="space-y-6">
                       <div>
@@ -38,7 +45,14 @@ const LastPosts = ({ posts }) => {
                             <Tag key={tag} text={tag} />
                           ))}
                         </div>
+                        <dl>
+                          <dt className="sr-only">Published on</dt>
+                          <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+                            <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
+                          </dd>
+                        </dl>
                       </div>
+
                       <div className="prose max-w-none text-gray-500 dark:text-gray-400">
                         {summary}
                       </div>

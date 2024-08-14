@@ -3,6 +3,7 @@ const siteMetadata = {
   title: 'NextPress Starter Blog',
   author: 'Samyar Modabber',
   headerTitle: 'NextPress Website',
+  slogan: 'A website with markdown',
   description:
     'A website created with Next.js and Tailwind.css based on the Markdown document and SEO friendly and responsive.',
   language: 'en-us',

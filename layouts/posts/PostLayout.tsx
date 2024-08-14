@@ -8,7 +8,6 @@ import Comments from '@/components/blog/Comments'
 import Tag from '@/components/blog/Tag'
 import Category from '@/components/blog/Category'
 
-import SectionContainer from '@/components/layouts-parts/SectionContainer'
 import ScrollTopAndComment from '@/components/layouts-parts/ScrollTopAndComment'
 
 import Link from '@/components/tools/Link'
@@ -178,7 +177,7 @@ export default function PostLayout({
                     )}
                   </div>
                 )}
-                {toc && (
+                {toc && siteMetadata.blog.SHOW_TOC && (
                   <div className="sticky top-0 z-40 divide-gray-200 py-4 xl:divide-y xl:py-8">
                     <TOCInLine
                       toc={toc}

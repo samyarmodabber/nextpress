@@ -2,6 +2,7 @@
 const siteMetadata = {
   title: 'NextPress Starter Blog',
   author: 'Samyar Modabber',
+  occupation: 'Full-Stack Developer',
   headerTitle: 'NextPress Website',
   slogan: 'A website with markdown',
   description:
@@ -30,11 +31,14 @@ const siteMetadata = {
     POSTS_PER_PAGE: 20,
     POST_CARD_TYPE: 'type2', // '' (for default) or type2
     DEFAULT_IMAGE_POST: '/static/images/twitter-card.png',
+    SHOW_TOC: false, // Show table of content on Post
   },
   landingPage: {
     showLatestPosts: true,
     showNewsletter: true, // also setup provider for newsletter
     showCarousel: true,
+    showHero: true,
+    showSelectedProjects: true,
   },
   analytics: {
     // If you want to use an analytics provider you have to add it to the

@@ -1,5 +1,6 @@
 interface Project {
   title: string
+  selected: boolean
   description: string
   href?: string
   imgSrc?: string
@@ -8,6 +9,7 @@ interface Project {
 const projectsData: Project[] = [
   {
     title: 'A Search Engine',
+    selected: true,
     description: `What if you could look up any information in the world? Webpages, images, videos
     and more. Google has many features to help you find exactly what you're looking
     for.`,
@@ -16,6 +18,7 @@ const projectsData: Project[] = [
   },
   {
     title: 'The Time Machine',
+    selected: true,
     description: `Imagine being able to travel back in time or to the future. Simple turn the knob
     to the desired date and press "Go". No more worrying about lost keys or
     forgotten headphones with this simple yet affordable solution.`,
@@ -24,6 +27,7 @@ const projectsData: Project[] = [
   },
   {
     title: 'NextPress',
+    selected: true,
     description: `A website template by extention of tailwindBlog.`,
     imgSrc: '/static/images/twitter-card.png',
     href: '/blog/tailwind-blog/the-time-machine',

@@ -30,7 +30,7 @@ const projectsData: Project[] = [
     selected: true,
     description: `A website template by extention of tailwindBlog.`,
     imgSrc: '/static/images/twitter-card.png',
-    href: '/blog/tailwind-blog/the-time-machine',
+    href: '/blog/nextpress/introducing-the-nextpress',
   },
 ]
 

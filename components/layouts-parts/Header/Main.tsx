@@ -15,9 +15,11 @@ const Header = () => {
       <div>
         <Link href="/" aria-label={headerTitle}>
           <div className="flex items-center justify-between">
-            <div className="mr-3">
-              <Image src={siteLogoPNG} alt={title} width={80} height={80} loading="lazy" />
-            </div>
+            {siteLogoPNG && (
+              <div className="mr-3 hidden">
+                <Image src={siteLogoPNG} alt={title} width={80} height={80} loading="lazy" />
+              </div>
+            )}
             {typeof headerTitle === 'string' ? (
               <div className="flex flex-col ">
                 <div className="hidden h-6 text-2xl font-semibold lg:block">{headerTitle}</div>

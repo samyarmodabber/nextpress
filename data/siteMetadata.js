@@ -1,8 +1,8 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
   title: 'NextPress Starter Blog',
-  author: 'Samyar Modabber',
-  occupation: 'Full-Stack Developer',
+  author: 'Your Name',
+  occupation: 'Your Occupation',
   headerTitle: 'NextPress Website',
   slogan: 'A website with markdown',
   description:

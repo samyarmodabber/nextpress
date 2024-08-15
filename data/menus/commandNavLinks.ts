@@ -5,7 +5,7 @@ const commandNavLinks = [
   { href: '/categories', title: 'Categories' },
   { href: '/projects', title: 'Projects' },
   { href: '/authors', title: 'Authors' },
-  { href: '/pages/about', title: 'About' },
+  { href: '/about', title: 'About' },
 ]
 
 export default commandNavLinks

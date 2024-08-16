@@ -25,7 +25,11 @@ const LastPosts = ({ posts }) => {
                     <Image
                       width={1280}
                       height={832}
-                      src={images[0]}
+                      src={
+                        Array.isArray(images) && images.length > 0
+                          ? images[0]
+                          : siteMetadata.blog.DEFAULT_IMAGE_POST
+                      }
                       alt={title}
                       className="rounded-lg"
                     />

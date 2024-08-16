@@ -1,8 +1,6 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
   title: 'NextPress Starter Blog',
-  author: 'Your Name',
-  occupation: 'Your Occupation',
   headerTitle: 'NextPress Website',
   slogan: 'A website with markdown',
   description:
@@ -11,21 +9,25 @@ const siteMetadata = {
   dir: 'ltr',
   locale: 'en-US',
   theme: 'system', // system, dark or light
-  email: 'address@yoursite.com',
+  author: 'Your Name',
+  occupation: 'Your Occupation',
   siteUrl: 'https://nextpress.vercel.app',
   siteRepo: 'https://github.com/samyarmodabber/nextpress',
   siteLogoSVG: '/static/images/site/logo.svg',
   siteLogoPNG: '/static/images/site/logo.png',
   socialBanner: '/static/images/twitter-card.png',
-  github: 'https://github.com',
-  x: '',
-  // twitter: 'https://twitter.com/Twitter',
-  facebook: 'https://facebook.com',
-  youtube: 'https://youtube.com',
-  linkedin: 'https://www.linkedin.com',
-  threads: 'https://www.threads.net',
-  instagram: 'https://www.instagram.com',
-  mastodon: 'https://mastodon.social',
+  social: {
+    email: 'address@yoursite.com',
+    github: 'https://github.com',
+    x: '',
+    // twitter: 'https://twitter.com/Twitter',
+    facebook: 'https://facebook.com',
+    youtube: 'https://youtube.com',
+    linkedin: 'https://www.linkedin.com',
+    threads: 'https://www.threads.net',
+    instagram: 'https://www.instagram.com',
+    mastodon: 'https://mastodon.social',
+  },
   blog: {
     MAX_DISPLAY: 2, //For landing page
     POSTS_PER_PAGE: 10,

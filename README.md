@@ -1,6 +1,6 @@
 # NextPress
 
-![tailwind-nextjs-banner](/public/static/images/twitter-card.png)
+![tailwind-nextjs-banner](/public/static/site/twitter-card.png)
 
 [![GitHub Repo stars](https://img.shields.io/github/stars/samyarmodabber/nextpress?style=social)](https://GitHub.com/samyarmodabber/nextpress/stargazers/)
 [![GitHub forks](https://img.shields.io/github/forks/samyarmodabber/nextpress?style=social)](https://GitHub.com/samyarmodabber/nextpress/network/)

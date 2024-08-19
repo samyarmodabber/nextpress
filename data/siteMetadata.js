@@ -15,7 +15,7 @@ const siteMetadata = {
   siteRepo: 'https://github.com/samyarmodabber/nextpress',
   siteLogoSVG: '/static/site/logo.svg',
   siteLogoPNG: '/static/site/logo.png',
-  socialBanner: '/static/twitter-card.png',
+  socialBanner: '/static/site/twitter-card.png',
   social: {
     email: 'address@yoursite.com',
     github: 'https://github.com',

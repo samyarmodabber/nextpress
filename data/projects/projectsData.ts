@@ -29,7 +29,7 @@ const projectsData: Project[] = [
     title: 'NextPress',
     selected: true,
     description: `A website template by extention of tailwindBlog.`,
-    imgSrc: '/static/images/twitter-card.png',
+    imgSrc: '/static/site/twitter-card.png',
     href: '/blog/nextpress/introducing-the-nextpress',
   },
 ]

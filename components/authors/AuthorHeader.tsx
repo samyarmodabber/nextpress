@@ -32,7 +32,7 @@ export const AuthorHeader = ({ author }) => {
       >
         <Image
           alt={name}
-          className="relative top-1/2 my-auto h-24 w-24 rounded-full shadow-2xl md:h-32 md:w-32"
+          className="relative top-1/2 my-auto h-24 w-24 rounded-full bg-white shadow-2xl md:h-32 md:w-32"
           src={avatar}
           width={96}
           height={96}

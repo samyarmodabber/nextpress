@@ -13,9 +13,9 @@ const siteMetadata = {
   occupation: 'Your Occupation',
   siteUrl: 'https://nextpress.vercel.app',
   siteRepo: 'https://github.com/samyarmodabber/nextpress',
-  siteLogoSVG: '/static/images/site/logo.svg',
-  siteLogoPNG: '/static/images/site/logo.png',
-  socialBanner: '/static/images/twitter-card.png',
+  siteLogoSVG: '/static/site/logo.svg',
+  siteLogoPNG: '/static/site/logo.png',
+  socialBanner: '/static/twitter-card.png',
   social: {
     email: 'address@yoursite.com',
     github: 'https://github.com',

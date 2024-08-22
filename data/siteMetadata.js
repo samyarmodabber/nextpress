@@ -32,7 +32,7 @@ const siteMetadata = {
     MAX_DISPLAY: 2, //For landing page
     POSTS_PER_PAGE: 10,
     POST_CARD_TYPE: 'type2', // '' (for default) or type2 for /blog
-    DEFAULT_IMAGE_POST: '/static/images/twitter-card.png',
+    DEFAULT_IMAGE_POST: '/static/site/twitter-card.png',
     SHOW_TOC: true, // Show table of content on Post
   },
   landingPage: {

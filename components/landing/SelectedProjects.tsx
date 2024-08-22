@@ -97,7 +97,7 @@ const Card = (props) => {
         </div>
         <ArrowUpRightIcon className="size-[18px] opacity-0 transition-opacity group-hover:opacity-100" />
       </div>
-      <Image width={1280} height={832} src={imgSrc} alt={description} className="rounded-lg" />
+      <Image width={1280} height={832} src={imgSrc} alt={title} className="rounded-lg" />
       <div className=" flex flex-col transition-[left] ease-out group-hover:left-[30px]">
         <h3 className="font-title text-primary text-2xl font-bold">{title}</h3>
         <p className="dark:text-muted-foreground text-primary mt-2">{description}</p>

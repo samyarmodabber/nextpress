@@ -8,6 +8,7 @@ import { allPages } from 'contentlayer/generated'
 import type { Pages } from 'contentlayer/generated'
 import siteMetadata from '@/data/siteMetadata'
 import { components } from '@/components/markdown/MDXComponents'
+import { notFound } from 'next/navigation'
 
 import PageLayout from '@/layouts/posts/PageLayout'
 const defaultLayout = 'PageLayout'
@@ -24,7 +25,7 @@ export async function generateMetadata({
   const page = allPages.find((p) => p.slug === slug)
 
   if (!page) {
-    return
+    return notFound()
   }
   let imageList = [siteMetadata.socialBanner]
   if (page.image) {

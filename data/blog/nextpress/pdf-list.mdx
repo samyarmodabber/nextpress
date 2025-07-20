@@ -1,0 +1,54 @@
+---
+title: 'Embed Dynamic PDF Gallery'
+date: '2025-07-20'
+lastmod: '2025-07-20'
+authors: ['samyar']
+tags: ['documents', 'PDF', 'Gallery', 'nextpress']
+categories: ['NextPress']
+images: ['/static/images/blog/pdf-list.png']
+summary: 'New Features on NextPress for a PDF Gallery'
+bibliography: references-data.bib
+layout: PostLayout
+draft: false
+---
+
+## How to Embed List of PDF
+
+In this tutorial, we'll introduce `PDFList` component that you can create a **dynamic PDF gallery** in your NextPress app. Each PDF will have a clickable image thumbnail. If a thumbnail is missing, we’ll show a default image instead.
+
+This is perfect for displaying documents, papers, or reports in a visually appealing way.
+
+---
+
+### Folder Structure
+
+Make sure your files are organized like this:
+
+```bash
+public/
+    static/
+    pdf/
+    default.jpg
+        python/
+            learn-python-basic.pdf
+            learn-python-basic.jpg
+            advanced-python.pdf ← no thumbnail → uses default
+        math/
+            calculusI.pdf
+            calculusI.png
+            calculusII.pdf
+            calculusII.png
+```
+
+- Each PDF has an optional `.jpg` or `.png` image with the same filename.
+- A `default.jpg` is used if a preview image is missing.
+
+### How to use it
+
+```js
+<PDFList setName="python" />
+```
+
+### The Result is as follow
+
+<PDFList setName="python" />

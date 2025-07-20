@@ -6,9 +6,9 @@ import type { MDXComponents } from 'mdx/types'
 import TOCInline from '@/components/blog/TOCInLine'
 import Image from '@/components/tools/Image'
 import CustomLink from '@/components/tools/Link'
-import YouTube from '@/components/tools/YouTube'
-
 import TableWrapper from './TableWrapper'
+import YouTube from '@/components/tools/YouTube'
+import PDFList from '@/components/tools/PDFList'
 
 export const components: MDXComponents = {
   Image,
@@ -18,4 +18,5 @@ export const components: MDXComponents = {
   table: TableWrapper,
   BlogNewsletterForm,
   YouTube,
+  PDFList,
 }

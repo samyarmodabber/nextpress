@@ -5,7 +5,7 @@ import Carousel from '@/components/landing/Carousel'
 import { slides } from '@/data/carousel/demo'
 
 import Hero from '@/components/landing/Hero'
-import { heroData } from '@/data/heros/herosDemo'
+import { heroData } from '@/components/heros/herosDemo'
 
 import siteMetadata from '@/data/siteMetadata'
 import SelectedProjects from '@/components/landing/SelectedProjects'

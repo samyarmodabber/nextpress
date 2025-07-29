@@ -1,6 +1,6 @@
 import Link from '@/components/tools/Link'
 import Image from 'next/image'
-import siteMetadata from '@/data/siteMetadata'
+import siteSetting from '@/components/siteSetting'
 import Tag from '@/components/blog/Tag'
 
 const PostCard2 = ({ post }) => {
@@ -12,7 +12,7 @@ const PostCard2 = ({ post }) => {
           src={
             Array.isArray(images) && images.length > 0
               ? images[0]
-              : siteMetadata.blog.DEFAULT_IMAGE_POST
+              : siteSetting.blog.DEFAULT_IMAGE_POST
           }
           className="aspect-video"
           width={1600}
@@ -31,7 +31,7 @@ const PostCard2 = ({ post }) => {
         )}
         <span className="ml-1 text-sm font-bold text-gray-600">
           <time dateTime={date}>
-            {new Date(date).toLocaleDateString(siteMetadata.locale, siteMetadata.postDateTemplate)}
+            {new Date(date).toLocaleDateString(siteSetting.locale, siteSetting.postDateTemplate)}
           </time>
         </span>
         <div className="mt-1 flex flex-row space-x-3">

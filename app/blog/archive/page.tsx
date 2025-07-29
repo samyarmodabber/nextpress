@@ -1,4 +1,4 @@
-import Archive from '@/layouts/posts/Archive'
+import Archive from '@/components/layouts/posts/Archive'
 import React from 'react'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
 import { allBlogs } from 'contentlayer/generated'

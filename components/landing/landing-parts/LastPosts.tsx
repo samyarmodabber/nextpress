@@ -1,7 +1,7 @@
 import { formatDate } from 'pliny/utils/formatDate'
 import Link from '@/components/tools/Link'
 import Tag from '@/components/blog/Tag'
-import siteMetadata from '@/data/siteMetadata'
+import siteSetting from '@/components/siteSetting'
 import Image from 'next/image'
 
 const LastPosts = ({ posts }) => {
@@ -14,7 +14,7 @@ const LastPosts = ({ posts }) => {
       </div>
       <ul className="divide-y divide-gray-200 dark:divide-gray-700">
         {!posts.length && 'No posts found.'}
-        {posts.slice(0, siteMetadata.blog.MAX_DISPLAY).map((post) => {
+        {posts.slice(0, siteSetting.blog.MAX_DISPLAY).map((post) => {
           const { slug, date, title, summary, tags, images } = post
           return (
             <li key={slug} className="py-12">
@@ -28,7 +28,7 @@ const LastPosts = ({ posts }) => {
                       src={
                         Array.isArray(images) && images.length > 0
                           ? images[0]
-                          : siteMetadata.blog.DEFAULT_IMAGE_POST
+                          : siteSetting.blog.DEFAULT_IMAGE_POST
                       }
                       alt={title}
                       className="rounded-lg"
@@ -52,7 +52,7 @@ const LastPosts = ({ posts }) => {
                         <dl>
                           <dt className="sr-only">Published on</dt>
                           <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                            <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
+                            <time dateTime={date}>{formatDate(date, siteSetting.locale)}</time>
                           </dd>
                         </dl>
                       </div>
@@ -77,7 +77,7 @@ const LastPosts = ({ posts }) => {
           )
         })}
       </ul>
-      {posts.length > siteMetadata.blog.MAX_DISPLAY && (
+      {posts.length > siteSetting.blog.MAX_DISPLAY && (
         <div className="flex justify-end text-base font-medium leading-6">
           <Link
             href="/blog"

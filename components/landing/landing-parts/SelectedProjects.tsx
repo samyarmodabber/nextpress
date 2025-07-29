@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRef } from 'react'
 import projectsData from '@/data/projects/projectsData'
-import CustomLink from '../tools/Link'
+import CustomLink from '../../tools/Link'
 
 const variants = {
   initial: {

@@ -13,7 +13,7 @@ import PostCard2 from '@/components/blog/PostCard2'
 import PostCategories from '@/components/blog/PostCategories'
 import PostTags from '@/components/blog/PostTags'
 
-import siteMetadata from '@/data/siteMetadata'
+import siteSetting from '@/components/siteSetting'
 import PageTitle from '@/components/tools/PageTitle'
 import ScrollTopAndComment from '@/components/layouts-parts/ScrollTopAndComment'
 
@@ -33,7 +33,7 @@ export default function ListLayoutWithTags({
   pagination,
 }: ListLayoutProps) {
   const pathname = usePathname()
-  const { blog } = siteMetadata
+  const { blog } = siteSetting
 
   const displayPosts = initialDisplayPosts.length > 0 ? initialDisplayPosts : posts
 

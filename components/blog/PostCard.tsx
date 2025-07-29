@@ -2,7 +2,7 @@ import { formatDate } from 'pliny/utils/formatDate'
 import Link from '@/components/tools/Link'
 import Tag from '@/components/blog/Tag'
 import Category from '@/components/blog/Category'
-import siteMetadata from '@/data/siteMetadata'
+import siteSetting from '@/components/siteSetting'
 import Image from '../tools/Image'
 
 const PostCard = ({ post }) => {
@@ -16,7 +16,7 @@ const PostCard = ({ post }) => {
             src={
               Array.isArray(images) && images.length > 0
                 ? images[0]
-                : siteMetadata.blog.DEFAULT_IMAGE_POST
+                : siteSetting.blog.DEFAULT_IMAGE_POST
             }
             className="aspect-video sm:pr-5"
             width={1600}
@@ -29,7 +29,7 @@ const PostCard = ({ post }) => {
         <dl>
           <dt className="sr-only">Published on</dt>
           <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-            <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
+            <time dateTime={date}>{formatDate(date, siteSetting.locale)}</time>
           </dd>
         </dl>
         <div className="space-y-3">

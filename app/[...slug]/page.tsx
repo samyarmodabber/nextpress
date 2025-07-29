@@ -10,7 +10,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { components } from '@/components/markdown/MDXComponents'
 import { notFound } from 'next/navigation'
 
-import PageLayout from '@/layouts/posts/PageLayout'
+import PageLayout from '@/components/layouts/posts/PageLayout'
 const defaultLayout = 'PageLayout'
 const layouts = {
   PageLayout,

@@ -105,7 +105,7 @@ You can map mdx blog content to layout components by configuring the frontmatter
 
 ### Adding new templates
 
-layout templates are stored in the `./layouts` folder. You can add your React components that you want to map to markdown content in this folder.
+layout templates are stored in the `@/components/layouts` folder. You can add your React components that you want to map to markdown content in this folder.
 The component file name must match that specified in the markdown frontmatter `layout` field.
 
 The only required field is `children` which contains the rendered MDX content, though you would probably want to pass in the frontMatter contents and render it in the template.
@@ -156,7 +156,7 @@ export const MDXComponents = {
   a: CustomLink,
   pre: Pre,
   wrapper: ({ components, layout, ...rest }) => {
-    const Layout = require(`../layouts/${layout}`).default
+    const Layout = require(`@/components/layouts/${layout}`).default
     return <Layout {...rest} />
   },
 }

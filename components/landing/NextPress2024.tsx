@@ -1,18 +1,18 @@
 import React from 'react'
 
-import SelectedProjects from '@/components/landing/SelectedProjects'
-import LastPosts from '@/components/landing/LastPosts'
+import SelectedProjects from '@/components/landing/landing-parts/SelectedProjects'
+import LastPosts from '@/components/landing/landing-parts/LastPosts'
 import Newslatter from '@/components/tools/Newslatter'
-import Carousel from '@/components/landing/Carousel'
+import Carousel from '@/components/landing/landing-parts/Carousel'
 import { slides } from '@/data/carousel/demo'
-import Hero from '@/components/landing/Hero'
+import Hero from '@/components/landing/landing-parts/Hero'
 import { heroData } from '@/components/heros/herosDemo'
 
-import siteMetadata from '@/data/siteMetadata'
+import siteSetting from '@/components/siteSetting'
 
 const NextPress2024 = ({ posts }) => {
   const { showLatestPosts, showCarousel, showNewsletter, showHero, showSelectedProjects } =
-    siteMetadata.landingPage.NEXTPRESS2024
+    siteSetting.landingPage.NEXTPRESS2024
   return (
     <>
       {showCarousel && <Carousel slides={slides} />}

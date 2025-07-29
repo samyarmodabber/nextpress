@@ -3,6 +3,7 @@ import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog, Authors } from 'contentlayer/generated'
 
 import siteMetadata from '@/data/siteMetadata'
+import siteSetting from '@/components/siteSetting'
 
 import Comments from '@/components/blog/Comments'
 import Tag from '@/components/blog/Tag'
@@ -177,7 +178,7 @@ export default function PostLayout({
                     )}
                   </div>
                 )}
-                {toc && siteMetadata.blog.SHOW_TOC && (
+                {toc && siteSetting.blog.SHOW_TOC && (
                   <div className="sticky top-0 z-40 divide-gray-200 py-4 xl:divide-y xl:py-8">
                     <TOCInLine
                       toc={toc}

@@ -15,9 +15,9 @@ import siteMetadata from '@/data/siteMetadata'
 import PageTitle from '@/components/tools/PageTitle'
 import { components } from '@/components/markdown/MDXComponents'
 
-import PostSimple from '@/layouts/posts/PostSimple'
-import PostLayout from '@/layouts/posts/PostLayout'
-import PostBanner from '@/layouts/posts/PostBanner'
+import PostSimple from '@/components/layouts/posts/PostSimple'
+import PostLayout from '@/components/layouts/posts/PostLayout'
+import PostBanner from '@/components/layouts/posts/PostBanner'
 
 const defaultLayout = 'PostLayout'
 

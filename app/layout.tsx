@@ -10,7 +10,7 @@ import { SearchProvider, SearchConfig } from 'pliny/search'
 
 import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
-import LayoutWrapper from '@/layouts/LayoutWrapper'
+import LayoutWrapper from '@/components/layouts/LayoutWrapper'
 
 const space_grotesk = Space_Grotesk({
   subsets: ['latin'],

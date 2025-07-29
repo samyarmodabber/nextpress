@@ -11,6 +11,7 @@ import { SearchProvider, SearchConfig } from 'pliny/search'
 import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
 import LayoutWrapper from '@/components/layouts/LayoutWrapper'
+import siteSetting from '@/components/siteSetting'
 
 const space_grotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -99,8 +100,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className="bg-white pl-[calc(100vw-100%)] text-black antialiased dark:bg-gray-950 dark:text-white"
       >
         <ThemeProviders>
-          <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
-          <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
+          <Analytics analyticsConfig={siteSetting.analytics as AnalyticsConfig} />
+          <SearchProvider searchConfig={siteSetting.search as SearchConfig}>
             <LayoutWrapper>{children}</LayoutWrapper>
           </SearchProvider>
         </ThemeProviders>

@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import Bleed from 'pliny/ui/Bleed'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog } from 'contentlayer/generated'
-import siteMetadata from '@/data/siteMetadata'
+import siteSetting from '@/components/siteSetting'
 
 // tools
 import Image from '@/components/tools/Image'
@@ -46,7 +46,7 @@ export default function PostMinimal({ content, next, prev, children }: LayoutPro
           <div dir={dir ? dir : 'ltr'} className="prose max-w-none py-4 dark:prose-invert">
             {children}
           </div>
-          {siteMetadata.comments?.provider && (
+          {siteSetting.comments?.provider && (
             <div className="pb-6 pt-6 text-center text-gray-700 dark:text-gray-300" id="comment">
               <Comments slug={slug} />
             </div>

@@ -1,6 +1,6 @@
 'use client'
 
-import siteMetadata from '@/data/siteMetadata'
+import siteSetting from '@/components/siteSetting'
 import { useEffect, useState } from 'react'
 
 const ScrollTopAndComment = ({ showComments = true }) => {
@@ -26,7 +26,7 @@ const ScrollTopAndComment = ({ showComments = true }) => {
     <div
       className={`fixed bottom-8 right-8 hidden flex-col gap-3 ${show ? 'md:flex' : 'md:hidden'}`}
     >
-      {showComments && siteMetadata.comments?.provider && (
+      {showComments && siteSetting.comments?.provider && (
         <button
           aria-label="Scroll To Comment"
           onClick={handleScrollToComment}

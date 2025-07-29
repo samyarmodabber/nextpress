@@ -1,9 +1,9 @@
 import NewsletterForm from 'pliny/ui/NewsletterForm'
-import siteMetadata from '@/data/siteMetadata'
+import siteSetting from '@/components/siteSetting'
 const Newslatter = () => {
   return (
     <>
-      {siteMetadata.newsletter?.provider && (
+      {siteSetting.newsletter?.provider && (
         <div className="flex items-center justify-center pt-4">
           <NewsletterForm />
         </div>

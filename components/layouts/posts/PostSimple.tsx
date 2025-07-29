@@ -4,13 +4,13 @@ import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog } from 'contentlayer/generated'
 
 import siteMetadata from '@/data/siteMetadata'
+import siteSetting from '@/components/siteSetting'
 
 import Comments from '@/components/blog/Comments'
 
 import Link from '@/components/tools/Link'
 import PageTitle from '@/components/tools/PageTitle'
 
-import SectionContainer from '@/components/layouts-parts/SectionContainer'
 import ScrollTopAndComment from '@/components/layouts-parts/ScrollTopAndComment'
 
 interface LayoutProps {
@@ -52,7 +52,7 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
                 {children}
               </div>
             </div>
-            {siteMetadata.comments?.provider && (
+            {siteSetting.comments?.provider && (
               <div className="pb-6 pt-6 text-center text-gray-700 dark:text-gray-300" id="comment">
                 <Comments slug={slug} />
               </div>

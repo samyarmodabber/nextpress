@@ -21,7 +21,8 @@ import rehypeKatex from 'rehype-katex'
 import rehypeCitation from 'rehype-citation'
 import rehypePrismPlus from 'rehype-prism-plus'
 import rehypePresetMinify from 'rehype-preset-minify'
-import siteMetadata from './data/siteMetadata'
+import siteMetadata from '@/data/siteMetadata'
+import siteSetting from './components/siteSetting'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer.js'
 import { Facebook } from './components/social-icons/icons'
 
@@ -95,11 +96,11 @@ function createCategoryCount(allBlogs) {
 }
 function createSearchIndex(allBlogs) {
   if (
-    siteMetadata?.search?.provider === 'kbar' &&
-    siteMetadata.search.kbarConfig.searchDocumentsPath
+    siteSetting?.search?.provider === 'kbar' &&
+    siteSetting.search.kbarConfig.searchDocumentsPath
   ) {
     writeFileSync(
-      `public/${path.basename(siteMetadata.search.kbarConfig.searchDocumentsPath)}`,
+      `public/${path.basename(siteSetting.search.kbarConfig.searchDocumentsPath)}`,
       JSON.stringify(allCoreContent(sortPosts(allBlogs)))
     )
     console.log('Local search index generated...')

@@ -36,11 +36,16 @@ const siteMetadata = {
     SHOW_TOC: true, // Show table of content on Post
   },
   landingPage: {
-    showLatestPosts: true,
-    showNewsletter: true, // also setup provider for newsletter
-    showCarousel: true,
-    showHero: true,
-    showSelectedProjects: true,
+    NEXTPRESS2024: {
+      title: 'NextPress 2024',
+      description: 'A website created with Next.js and Tailwind.css',
+      isActive: true,
+      showLatestPosts: true,
+      showNewsletter: true, // also setup provider for newsletter
+      showCarousel: true,
+      showHero: true,
+      showSelectedProjects: true,
+    },
   },
   analytics: {
     // If you want to use an analytics provider you have to add it to the

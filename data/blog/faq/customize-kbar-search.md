@@ -1,3 +1,17 @@
+---
+title: 'How can I customize the `kbar` search?'
+date: 2021-08-07T15:32:14Z
+lastmod: '2021-02-01'
+tags: ['next-js', 'kbar', 'guide']
+categories: ['next js']
+draft: false
+summary: 'Add a `SearchProvider` component such as the one shown below and use it in place of the default `SearchProvider` component in `app/layout.tsx`.'
+layout: PostSimple
+bibliography: references-data.bib
+authors: ['tails']
+images: ['/static/images/blog/twitter-card-TB.png']
+---
+
 # How can I customize the `kbar` search?
 
 Add a `SearchProvider` component such as the one shown below and use it in place of the default `SearchProvider` component in `app/layout.tsx`.
@@ -66,7 +80,7 @@ function createSearchIndex(allBlogs) {
   ) {
     writeFileSync(
       `public/${siteMetadata.search.kbarConfig.searchDocumentsPath}`,
-      JSON.stringify((sortPosts(allBlogs)))
+      JSON.stringify(sortPosts(allBlogs))
     )
     console.log('Local search index generated...')
   }

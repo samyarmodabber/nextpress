@@ -1,4 +1,16 @@
-# How can I add a custom MDX component?
+---
+title: 'How can I add a custom MDX component?'
+date: 2021-08-07T15:32:14Z
+lastmod: '2021-02-01'
+tags: ['next-js', 'mdx', 'guide']
+categories: ['next js']
+draft: false
+summary: "ere's an example on how to create a donut chart from Chart.js (assuming you already have the dependencies installed) and use it in MDX posts."
+layout: PostSimple
+bibliography: references-data.bib
+authors: ['tails']
+images: ['/static/images/blog/twitter-card-TB.png']
+---
 
 Here's an example on how to create a donut chart from Chart.js (assuming you already have the dependencies installed) and use it in MDX posts. First, create a new `DonutChart.tsx` component in `components`:
 

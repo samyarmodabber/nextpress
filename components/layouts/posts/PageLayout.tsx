@@ -22,7 +22,7 @@ export default function SinglePage({ content, children }: LayoutProps) {
   return (
     <>
       <ScrollTopAndComment />
-      <article>
+      <article className="mx-4 min-h-screen px-2 sm:mx-6 sm:px-4 md:mx-8 md:px-6 lg:mx-10 lg:px-8 xl:mx-12 xl:px-10">
         <div>
           <div className="divide-y divide-gray-200 dark:divide-gray-700">
             {image && image.length > 0 ? (

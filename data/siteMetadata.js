@@ -28,6 +28,16 @@ const siteMetadata = {
     instagram: 'https://www.instagram.com',
     mastodon: 'https://mastodon.social',
   },
+  keywords: [
+    'Next.js',
+    'Tailwind CSS',
+    'Markdown',
+    'SEO',
+    'React',
+    'Blog',
+    'Contentlayer',
+    'Developer Blog',
+  ],
 }
 
 module.exports = siteMetadata

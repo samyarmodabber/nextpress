@@ -1,4 +1,3 @@
-import 'css/prism.css'
 import 'katex/dist/katex.css'
 
 import { Metadata } from 'next'
@@ -34,49 +33,67 @@ export async function generateMetadata({
 }): Promise<Metadata | undefined> {
   const slug = decodeURI(params.slug.join('/'))
   const post = allBlogs.find((p) => p.slug === slug)
-  const authorList = post?.authors || ['default']
-  const authorDetails = authorList.map((author) => {
-    const authorResults = allAuthors.find((p) => p.slug === author)
-    return coreContent(authorResults as Authors)
-  })
-  if (!post) {
-    return
-  }
 
-  const publishedAt = new Date(post.date).toISOString()
-  const modifiedAt = new Date(post.lastmod || post.date).toISOString()
-  const authors = authorDetails.map((author) => author.name)
-  let imageList = [siteMetadata.socialBanner]
-  if (post.images) {
-    imageList = typeof post.images === 'string' ? [post.images] : post.images
-  }
-  const ogImages = imageList.map((img) => {
-    return {
-      url: img.includes('http') ? img : siteMetadata.siteUrl + img,
-    }
+  if (!post) return
+
+  const publishedTime = new Date(post.date).toISOString()
+  const modifiedTime = new Date(post.lastmod || post.date).toISOString()
+
+  const authorList = post.authors || ['default']
+  const authorDetails = authorList.map((author) => {
+    const result = allAuthors.find((p) => p.slug === author)
+    return coreContent(result as Authors)
   })
+
+  // For openGraph authors, each needs a name property:
+  const openGraphAuthors = authorDetails.map((author) => ({
+    name: author.name || siteMetadata.author,
+  }))
+
+  const authorMeta = authorDetails.map((author) => ({
+    name: author.name || siteMetadata.author,
+  }))
+
+  // Prepare images (absolute URLs)
+  const rawImages = post.images
+    ? typeof post.images === 'string'
+      ? [post.images]
+      : post.images
+    : [siteMetadata.socialBanner]
+
+  const imageList = rawImages.map((img) =>
+    img.startsWith('http') ? img : `${siteMetadata.siteUrl}${img}`
+  )
+
+  // Make sure tags is string[] or fallback
+  const keywords = Array.isArray(post.tags) ? post.tags : ['blog', 'nextpress', 'article']
 
   return {
     title: post.title,
-    description: post.summary,
+    description: post.summary || siteMetadata.description,
+    authors: authorMeta,
     openGraph: {
       title: post.title,
-      description: post.summary,
+      description: post.summary || siteMetadata.description,
       siteName: siteMetadata.title,
-      locale: 'en_US',
+      locale: siteMetadata.locale,
       type: 'article',
-      publishedTime: publishedAt,
-      modifiedTime: modifiedAt,
-      url: './',
-      images: ogImages,
-      authors: authors.length > 0 ? authors : [siteMetadata.author],
+      publishedTime,
+      modifiedTime,
+      url: `${siteMetadata.siteUrl}/blog/${slug}`,
+      images: imageList.map((url) => ({ url })),
+      // authors: openGraphAuthors,
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
-      description: post.summary,
+      description: post.summary || siteMetadata.description,
       images: imageList,
     },
+    alternates: {
+      canonical: `${siteMetadata.siteUrl}/blog/${slug}`,
+    },
+    keywords,
   }
 }
 

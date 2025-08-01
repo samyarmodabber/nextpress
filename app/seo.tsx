@@ -5,18 +5,42 @@ interface PageSEOProps {
   title: string
   description?: string
   image?: string
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: any
+  keywords?: string[]
+  robots?: string
+  authors?: { name: string; url?: string }[]
+  themeColor?: string
+  canonicalUrl?: string
+  // Allow other metadata extensions
+  [key: string]: unknown
 }
 
-export function genPageMetadata({ title, description, image, ...rest }: PageSEOProps): Metadata {
+export function genPageMetadata({
+  title,
+  description,
+  image,
+  keywords,
+  robots,
+  authors,
+  themeColor,
+  canonicalUrl,
+  ...rest
+}: PageSEOProps): Metadata {
   return {
     title,
     description: description || siteMetadata.description,
+    keywords: [...new Set([...(keywords || []), ...(siteMetadata.keywords || [])])],
+    robots,
+    authors,
+    themeColor,
+    alternates: canonicalUrl
+      ? {
+          canonical: canonicalUrl,
+        }
+      : undefined,
     openGraph: {
       title: `${title} | ${siteMetadata.title}`,
       description: description || siteMetadata.description,
-      url: './',
+      url: canonicalUrl || './',
       siteName: siteMetadata.title,
       images: image ? [image] : [siteMetadata.socialBanner],
       locale: 'en_US',

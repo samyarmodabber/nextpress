@@ -51,7 +51,7 @@ export default function PostLayout({
   return (
     <>
       <ScrollTopAndComment />
-      <article>
+      <article className="mx-4 min-h-screen px-2 sm:mx-6 sm:px-4 md:mx-8 md:px-6 lg:mx-10 lg:px-8 xl:mx-12 xl:px-10">
         <div className="xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700">
           <header className="pt-6 xl:pb-6">
             <div className="space-y-1 text-center">

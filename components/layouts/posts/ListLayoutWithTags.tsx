@@ -38,7 +38,7 @@ export default function ListLayoutWithTags({
   const displayPosts = initialDisplayPosts.length > 0 ? initialDisplayPosts : posts
 
   return (
-    <>
+    <div className="mx-4 min-h-screen px-2 sm:mx-6 sm:px-4 md:mx-8 md:px-6 lg:mx-10 lg:px-8 xl:mx-12 xl:px-10">
       <ScrollTopAndComment showComments={false} />
       <PageTitle>Blog</PageTitle>
       <div className="flex sm:space-x-12">
@@ -76,6 +76,6 @@ export default function ListLayoutWithTags({
           )}
         </div>
       </div>
-    </>
+    </div>
   )
 }

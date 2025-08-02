@@ -24,7 +24,7 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
   const { path, slug, date, title, dir } = content
 
   return (
-    <>
+    <div className="mx-4 min-h-screen px-2 sm:mx-6 sm:px-4 md:mx-8 md:px-6 lg:mx-10 lg:px-8 xl:mx-12 xl:px-10">
       <ScrollTopAndComment />
       <article>
         <div>
@@ -86,6 +86,6 @@ export default function PostLayout({ content, next, prev, children }: LayoutProp
           </div>
         </div>
       </article>
-    </>
+    </div>
   )
 }

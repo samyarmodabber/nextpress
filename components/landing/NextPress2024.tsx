@@ -6,7 +6,7 @@ import Newslatter from '@/components/tools/Newslatter'
 import Carousel from '@/components/landing/landing-parts/Carousel'
 import { slides } from '@/data/carousel/demo'
 import Hero from '@/components/landing/landing-parts/Hero'
-import { heroData } from '@/components/heros/herosDemo'
+import { heroData } from '@/data/heros/herosDemo'
 
 import siteSetting from '@/components/siteSetting'
 

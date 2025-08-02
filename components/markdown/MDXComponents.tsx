@@ -9,6 +9,7 @@ import CustomLink from '@/components/tools/Link'
 import TableWrapper from './TableWrapper'
 import YouTube from '@/components/tools/YouTube'
 import PDFList from '@/components/tools/PDFList'
+import Flashcards from '@/components/tools/Flashcards'
 
 export const components: MDXComponents = {
   Image,
@@ -19,4 +20,5 @@ export const components: MDXComponents = {
   BlogNewsletterForm,
   YouTube,
   PDFList,
+  Flashcards,
 }

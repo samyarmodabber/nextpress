@@ -23,30 +23,24 @@ This component is ideal for:
 
 export const quizData = [
   {
+    question: 'Fill in the blank: 5 + 7 = ___',
+    blankAnswer: '12',
+    type: 'blank',
+  },
+  {
     question: 'What is the largest planet in our solar system?',
     answers: ['Earth', 'Mars', 'Jupiter', 'Saturn'],
     correctIndex: 2,
-  },
-  {
-    question: 'Who wrote the play "Romeo and Juliet"?',
-    answers: ['William Shakespeare', 'Leo Tolstoy', 'Jane Austen', 'Mark Twain'],
-    correctIndex: 0,
-  },
-  {
-    question: 'Which country hosted the 2020 Summer Olympics (held in 2021)?',
-    answers: ['China', 'Japan', 'Brazil', 'South Korea'],
-    correctIndex: 1,
-  },
-  {
-    question: 'Which of these is a prime number?',
-    answers: ['9', '15', '17', '21'],
-    correctIndex: 2,
-  },
-  {
-    question: 'Which ocean is the largest?',
-    answers: ['Atlantic', 'Indian', 'Southern', 'Pacific'],
-    correctIndex: 3,
-  },
+    type: 'multiple',
+
+},
+{
+question: 'Who wrote the play "Romeo and Juliet"?',
+answers: ['William Shakespeare', 'Leo Tolstoy', 'Jane Austen', 'Mark Twain'],
+correctIndex: 0,
+type: 'multiple',
+
+},
 ]
 
 <Quiz quizData={quizData} autoAdvance={false} />
@@ -89,9 +83,15 @@ Here’s a list of **all features** currently included in your `Quiz` component,
 ```ts
 const quizData = [
   {
-    question: 'What is 2 + 2?',
-    answers: ['3', '4', '5', '6'],
-    correctIndex: 1,
+    question: 'Fill in the blank: 5 + 7 = ___',
+    blankAnswer: '12',
+    type: 'blank',
+  },
+  {
+    question: 'What is the largest planet in our solar system?',
+    answers: ['Earth', 'Mars', 'Jupiter', 'Saturn'],
+    correctIndex: 2,
+    type: 'multiple',
   },
   // ... more questions
 ]

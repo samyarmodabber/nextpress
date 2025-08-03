@@ -2,16 +2,30 @@
 
 import { useEffect, useState } from 'react'
 
-type Question = {
+type QuestionBase = {
   question: string
+  type: 'multiple' | 'blank'
+}
+
+type MultipleChoiceQuestion = QuestionBase & {
+  type: 'multiple'
   answers: string[]
   correctIndex: number
 }
 
-type QuestionWithShuffle = Question & {
-  shuffledAnswers: string[]
-  correctIndexShuffled: number
+type FillInTheBlankQuestion = QuestionBase & {
+  type: 'blank'
+  blankAnswer: string
 }
+
+type Question = MultipleChoiceQuestion | FillInTheBlankQuestion
+
+type QuestionWithShuffle =
+  | (MultipleChoiceQuestion & {
+      shuffledAnswers: string[]
+      correctIndexShuffled: number
+    })
+  | FillInTheBlankQuestion
 
 type Breakdown = {
   question: string
@@ -20,33 +34,48 @@ type Breakdown = {
   isCorrect: boolean
 }
 
-type QuizCoreProps = {
+type QuizProps = {
   quizData: Question[]
   autoAdvance?: boolean
-  timePerQuestion?: number // in seconds
+  timePerQuestion?: number
 }
 
-function QuizCore({ quizData, autoAdvance = true, timePerQuestion = 10 }: QuizCoreProps) {
+export default function Quiz({ quizData, autoAdvance = false, timePerQuestion = 10 }: QuizProps) {
   const [quizStarted, setQuizStarted] = useState(false)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [score, setScore] = useState(0)
   const [showResult, setShowResult] = useState(false)
+
   const [breakdown, setBreakdown] = useState<Breakdown[]>([])
   const [shuffledQuestions, setShuffledQuestions] = useState<QuestionWithShuffle[]>([])
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
+  const [textInput, setTextInput] = useState('')
   const [timeLeft, setTimeLeft] = useState(timePerQuestion)
+
+  const current = shuffledQuestions[currentIndex]
+
+  const shuffleArray = (arr: string[]) => {
+    const result = [...arr]
+    for (let i = result.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[result[i], result[j]] = [result[j], result[i]]
+    }
+    return result
+  }
 
   const shuffleQuiz = () => {
     const shuffled = quizData.map((q) => {
-      const shuffledAnswers = [...q.answers]
-      for (let i = shuffledAnswers.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1))
-        ;[shuffledAnswers[i], shuffledAnswers[j]] = [shuffledAnswers[j], shuffledAnswers[i]]
+      if (q.type === 'multiple') {
+        const shuffledAnswers = shuffleArray(q.answers)
+        return {
+          ...q,
+          shuffledAnswers,
+          correctIndexShuffled: shuffledAnswers.indexOf(q.answers[q.correctIndex]),
+        }
       }
-      const correctIndexShuffled = shuffledAnswers.indexOf(q.answers[q.correctIndex])
-      return { ...q, shuffledAnswers, correctIndexShuffled }
+      return q
     })
-    setShuffledQuestions(shuffled)
+    setShuffledQuestions(shuffled as QuestionWithShuffle[])
   }
 
   const resetQuiz = () => {
@@ -55,6 +84,7 @@ function QuizCore({ quizData, autoAdvance = true, timePerQuestion = 10 }: QuizCo
     setShowResult(false)
     setBreakdown([])
     setSelectedIndex(null)
+    setTextInput('')
     setTimeLeft(timePerQuestion)
     shuffleQuiz()
   }
@@ -64,28 +94,26 @@ function QuizCore({ quizData, autoAdvance = true, timePerQuestion = 10 }: QuizCo
   }, [quizData])
 
   useEffect(() => {
-    if (selectedIndex !== null || showResult || !quizStarted) return
+    if (!quizStarted || selectedIndex !== null || showResult) return
     if (timeLeft === 0) {
-      handleAnswer(-1) // treat as no answer
+      if (current.type === 'blank') handleBlankAnswer()
+      else handleAnswer(-1)
       return
     }
 
-    const timer = setTimeout(() => {
-      setTimeLeft((prev) => prev - 1)
-    }, 1000)
-
+    const timer = setTimeout(() => setTimeLeft((prev) => prev - 1), 1000)
     return () => clearTimeout(timer)
   }, [timeLeft, selectedIndex, showResult, quizStarted])
 
   useEffect(() => {
     setTimeLeft(timePerQuestion)
+    setTextInput('')
   }, [currentIndex])
 
   const handleAnswer = (idx: number) => {
-    if (selectedIndex !== null) return
+    if (selectedIndex !== null || current.type !== 'multiple') return
 
-    const question = shuffledQuestions[currentIndex]
-    const isCorrect = idx === question.correctIndexShuffled
+    const isCorrect = idx === current.correctIndexShuffled
     setSelectedIndex(idx)
 
     if (isCorrect) setScore((prev) => prev + 1)
@@ -93,20 +121,50 @@ function QuizCore({ quizData, autoAdvance = true, timePerQuestion = 10 }: QuizCo
     setBreakdown((prev) => [
       ...prev,
       {
-        question: question.question,
-        selected: idx >= 0 ? question.shuffledAnswers[idx] : 'No Answer',
-        correct: question.answers[question.correctIndex],
+        question: current.question,
+        selected: idx >= 0 ? current.shuffledAnswers[idx] : 'No Answer',
+        correct: current.answers[current.correctIndex],
         isCorrect,
       },
     ])
 
     if (autoAdvance) {
-      setTimeout(() => goToNextQuestion(), 1000)
+      setTimeout(goToNextQuestion, 1000)
+    }
+  }
+
+  const handleBlankAnswer = () => {
+    if (selectedIndex !== null || current.type !== 'blank') return
+
+    const userAnswer = textInput.trim().toLowerCase()
+    const correctAnswer = current.blankAnswer.trim().toLowerCase()
+    const isCorrect = userAnswer === correctAnswer
+
+    setSelectedIndex(0)
+
+    if (isCorrect) setScore((prev) => prev + 1)
+
+    setBreakdown((prev) => [
+      ...prev,
+      {
+        question: current.question,
+        selected: textInput || 'No Answer',
+        correct: current.blankAnswer,
+        isCorrect,
+      },
+    ])
+
+    if (autoAdvance) {
+      setTimeout(() => {
+        setTextInput('')
+        goToNextQuestion()
+      }, 1000)
     }
   }
 
   const goToNextQuestion = () => {
     setSelectedIndex(null)
+    setTextInput('')
     setTimeLeft(timePerQuestion)
     if (currentIndex + 1 < shuffledQuestions.length) {
       setCurrentIndex((prev) => prev + 1)
@@ -117,27 +175,43 @@ function QuizCore({ quizData, autoAdvance = true, timePerQuestion = 10 }: QuizCo
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (!quizStarted || showResult) return
+      if (!quizStarted || showResult || !current) return
 
-      if (!autoAdvance && selectedIndex === null && e.key >= '1' && e.key <= '4') {
-        const index = parseInt(e.key) - 1
-        if (index < shuffledQuestions[currentIndex]?.shuffledAnswers.length) {
+      if (current.type === 'multiple') {
+        if (!autoAdvance && selectedIndex === null && e.key >= '1' && e.key <= '4') {
+          const index = parseInt(e.key) - 1
+          if (index < current.shuffledAnswers.length) {
+            e.preventDefault()
+            handleAnswer(index)
+          }
+        }
+
+        if (!autoAdvance && selectedIndex !== null && e.code === 'Space') {
           e.preventDefault()
-          handleAnswer(index)
+          goToNextQuestion()
         }
       }
 
-      if (!autoAdvance && selectedIndex !== null && e.code === 'Space') {
-        e.preventDefault()
-        goToNextQuestion()
+      if (current.type === 'blank') {
+        if (e.key === 'Enter' && textInput && selectedIndex === null) {
+          e.preventDefault()
+          handleBlankAnswer()
+        }
       }
     }
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [autoAdvance, selectedIndex, currentIndex, showResult, quizStarted, shuffledQuestions])
+  }, [
+    autoAdvance,
+    selectedIndex,
+    currentIndex,
+    showResult,
+    quizStarted,
+    shuffledQuestions,
+    textInput,
+  ])
 
-  // Show intro screen
   if (!quizStarted) {
     return (
       <div className="mx-auto max-w-2xl space-y-6 rounded-lg bg-white p-6 text-center shadow dark:bg-gray-800 dark:text-white">
@@ -199,8 +273,6 @@ function QuizCore({ quizData, autoAdvance = true, timePerQuestion = 10 }: QuizCo
     )
   }
 
-  const current = shuffledQuestions[currentIndex]
-
   return (
     <div className="mx-auto max-w-2xl space-y-4 rounded-lg bg-white p-6 shadow dark:bg-gray-800 dark:text-white">
       <div className="flex items-center justify-between">
@@ -219,63 +291,87 @@ function QuizCore({ quizData, autoAdvance = true, timePerQuestion = 10 }: QuizCo
       </div>
 
       <p className="text-lg">{current.question}</p>
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        {current.shuffledAnswers.map((answer, idx) => {
-          let bgColor = ''
-          if (selectedIndex !== null) {
-            if (idx === selectedIndex) {
-              bgColor =
-                idx === current.correctIndexShuffled
-                  ? 'bg-green-200 dark:bg-green-700'
-                  : 'bg-red-200 dark:bg-red-700'
-            } else if (idx === current.correctIndexShuffled) {
-              bgColor = 'bg-green-100 dark:bg-green-600'
-            }
-          }
 
-          return (
+      {current.type === 'multiple' ? (
+        <>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            {current.shuffledAnswers.map((answer, idx) => {
+              const isSelected = selectedIndex === idx
+              const isCorrect = idx === current.correctIndexShuffled
+              const selected = selectedIndex !== null
+
+              const bgColor = selected
+                ? isSelected
+                  ? isCorrect
+                    ? 'bg-green-200 dark:bg-green-700'
+                    : 'bg-red-200 dark:bg-red-700'
+                  : isCorrect
+                    ? 'bg-green-100 dark:bg-green-600'
+                    : ''
+                : ''
+
+              return (
+                <button
+                  key={idx}
+                  onClick={() => handleAnswer(idx)}
+                  disabled={selected}
+                  className={`relative w-full rounded border px-4 py-2 text-left transition ${
+                    selected ? 'cursor-not-allowed' : 'hover:bg-blue-50 dark:hover:bg-blue-900'
+                  } ${bgColor} dark:border-gray-600`}
+                >
+                  <span className="absolute right-2 top-2 font-mono text-xs text-gray-500 dark:text-gray-300">
+                    {idx + 1}
+                  </span>
+                  {answer}
+                </button>
+              )
+            })}
+          </div>
+          {selectedIndex !== null && !autoAdvance && (
             <button
-              key={idx}
-              onClick={() => handleAnswer(idx)}
-              disabled={selectedIndex !== null}
-              className={`relative w-full rounded border px-4 py-2 text-left transition ${
-                selectedIndex !== null
-                  ? 'cursor-not-allowed'
-                  : 'hover:bg-blue-50 dark:hover:bg-blue-900'
-              } ${bgColor} dark:border-gray-600`}
+              onClick={goToNextQuestion}
+              className="mt-4 w-full rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400"
             >
-              <span className="absolute right-2 top-2 font-mono text-xs text-gray-500 dark:text-gray-300">
-                {idx + 1}
+              <span className="absolute right-2 top-2 rounded bg-blue-800 px-1 font-mono text-xs text-white dark:bg-blue-900">
+                ␣
               </span>
-              {answer}
+              Next Question →
             </button>
-          )
-        })}
-      </div>
-
-      {!autoAdvance && selectedIndex !== null && (
-        <button
-          onClick={goToNextQuestion}
-          className="relative mt-4 w-full rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400"
-        >
-          <span className="absolute right-2 top-2 rounded bg-blue-800 px-1 font-mono text-xs text-white dark:bg-blue-900">
-            ␣
-          </span>
-          Next Question →
-        </button>
+          )}
+        </>
+      ) : (
+        <div className="flex flex-col gap-4">
+          <input
+            type="text"
+            value={textInput}
+            onChange={(e) => setTextInput(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && selectedIndex === null) handleBlankAnswer()
+            }}
+            disabled={selectedIndex !== null}
+            placeholder="Type your answer..."
+            className="w-full rounded border px-4 py-2 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+          />
+          {selectedIndex === null ? (
+            <button
+              onClick={handleBlankAnswer}
+              disabled={!textInput}
+              className="w-full rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 disabled:opacity-50 dark:bg-blue-500 dark:hover:bg-blue-400"
+            >
+              Submit
+            </button>
+          ) : (
+            !autoAdvance && (
+              <button
+                onClick={goToNextQuestion}
+                className="w-full rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400"
+              >
+                Next Question →
+              </button>
+            )
+          )}
+        </div>
       )}
     </div>
-  )
-}
-
-type QuizProps = {
-  quizData: Question[]
-  autoAdvance?: boolean
-  timePerQuestion?: number
-}
-
-export default function Quiz({ quizData, autoAdvance = false, timePerQuestion = 10 }: QuizProps) {
-  return (
-    <QuizCore quizData={quizData} autoAdvance={autoAdvance} timePerQuestion={timePerQuestion} />
   )
 }

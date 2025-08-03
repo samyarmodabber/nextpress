@@ -1,0 +1,112 @@
+---
+title: 'Embed Quiz in markdown'
+date: '2025-08-03'
+lastmod: '2025-08-03'
+authors: ['samyar']
+tags: ['Test', 'Quiz', 'guide', 'nextpress']
+categories: ['NextPress']
+images: []
+summary: 'An overview of the new features on NextPress'
+bibliography: references-data.bib
+layout: PostLayout
+draft: false
+---
+
+This component is ideal for:
+
+- Educational apps
+- Self-assessments
+- Certification prep quizzes
+- Interactive learning with keyboard-friendly UX
+
+## Embed Quiz in markdown
+
+export const quizData = [
+  {
+    question: 'What is the largest planet in our solar system?',
+    answers: ['Earth', 'Mars', 'Jupiter', 'Saturn'],
+    correctIndex: 2,
+  },
+  {
+    question: 'Who wrote the play "Romeo and Juliet"?',
+    answers: ['William Shakespeare', 'Leo Tolstoy', 'Jane Austen', 'Mark Twain'],
+    correctIndex: 0,
+  },
+  {
+    question: 'Which country hosted the 2020 Summer Olympics (held in 2021)?',
+    answers: ['China', 'Japan', 'Brazil', 'South Korea'],
+    correctIndex: 1,
+  },
+  {
+    question: 'Which of these is a prime number?',
+    answers: ['9', '15', '17', '21'],
+    correctIndex: 2,
+  },
+  {
+    question: 'Which ocean is the largest?',
+    answers: ['Atlantic', 'Indian', 'Southern', 'Pacific'],
+    correctIndex: 3,
+  },
+]
+
+<Quiz quizData={quizData} autoAdvance={false} />
+
+---
+
+## Features & Usage
+
+### Features
+
+Here’s a list of **all features** currently included in your `Quiz` component, along with a **brief explanation** of each:
+
+| **Feature**                     | **Description**                                                                  |
+| ------------------------------- | -------------------------------------------------------------------------------- |
+| **1. Start Quiz Screen**        | Displays a welcome screen with a “Start Quiz” button before questions begin.     |
+| **2. Per-Question Timer**       | Each question has a countdown (default: 10 seconds). Time runs out = skip.       |
+| **3. Auto Advance (Optional)**  | If `autoAdvance=true`, next question shows automatically after answering.        |
+| **4. Manual Advance Support**   | If `autoAdvance=false`, user must press "Next" or use **Space** key.             |
+| **5. Keyboard Shortcuts**       | Select options using keys `1`–`4`, press **Space** to go to next (manual mode).  |
+| **6. Answer Highlighting**      | Answers turn green (correct) or red (wrong) after selection.                     |
+| **7. Question Breakdown**       | At the end, a detailed result with correct/your answers is shown.                |
+| **8. Restart Quiz**             | "Restart Quiz" button resets everything and brings you back to the Start page.   |
+| **9. Responsive Layout**        | Works well on both mobile and desktop (grid adapts automatically).               |
+| **10. Visual Option Labels**    | Each option has a small badge (1–4) at the top-right to help keyboard users.     |
+| **11. Dark Mode Support**       | Automatically adapts to light/dark themes with Tailwind’s `dark:` classes.       |
+| **12. Skipped/Timeout Answers** | If time runs out, the answer is marked as incorrect and recorded as "No Answer". |
+| **13. Accessible Markup**       | Buttons are semantic and keyboard navigable (for accessibility).                 |
+| **14. Configurable Props**      | Customize with:                                                                  |
+
+- `quizData` – array of questions
+- `autoAdvance` – boolean
+- `timePerQuestion` – number (in seconds)
+
+---
+
+### How to Use
+
+1. **Provide Quiz Data**
+
+```ts
+const quizData = [
+  {
+    question: 'What is 2 + 2?',
+    answers: ['3', '4', '5', '6'],
+    correctIndex: 1,
+  },
+  // ... more questions
+]
+```
+
+2. **Render Component**
+
+```tsx
+<Quiz quizData={quizData} autoAdvance={false} timePerQuestion={10} />
+```
+
+3. **Styling Support**
+
+Ensure you have Tailwind CSS configured and `darkMode: 'class'` in `tailwind.config.js`.
+
+4. **Theme Switching**
+
+Support dark mode by toggling a `dark` class on `<html>` or `<body>` element (e.g., via `next-themes`).

@@ -7,19 +7,22 @@ const SingleCard = ({ question, answer, flipped, onFlip }) => {
     <div
       onClick={onFlip}
       aria-hidden="true"
-      className={`relative flex h-48 w-80 transform cursor-pointer items-center justify-center rounded-lg p-6 text-center shadow-lg transition-transform ${
+      className={`relative flex h-48 w-80 transform cursor-pointer items-center justify-center rounded-xl p-6 text-center shadow-xl transition-transform duration-500 ${
         flipped ? 'rotate-y-180' : ''
-      }`}
+      } perspective`}
     >
-      <div className={`backface-hidden absolute inset-0 rounded-lg bg-white p-6`}>
-        <h3 className="text-lg font-bold text-gray-800">{question}</h3>
+      {/* Front Side */}
+      <div className="backface-hidden absolute inset-0 flex items-center justify-center rounded-xl bg-amber-100 p-6 text-gray-900 dark:bg-amber-100 dark:text-white">
+        <h3 className="text-xl font-semibold">{question}</h3>
       </div>
+
+      {/* Back Side */}
       <div
-        className={`rotate-y-180 backface-hidden absolute inset-0 transform rounded-lg bg-blue-500 p-6 text-white ${
+        className={`rotate-y-180 backface-hidden absolute inset-0 flex transform items-center justify-center rounded-xl bg-indigo-600 p-6 text-white ${
           flipped ? 'visible' : 'invisible'
         }`}
       >
-        <p>{answer}</p>
+        <p className="text-lg font-medium">{answer}</p>
       </div>
     </div>
   )
@@ -45,12 +48,10 @@ const Flashcards = ({ flashcards }) => {
 
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === 'ArrowRight') {
-        handleNext()
-      } else if (e.key === 'ArrowLeft') {
-        handlePrev()
-      } else if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault() // prevents spacebar from scrolling
+      if (e.key === 'ArrowRight') handleNext()
+      else if (e.key === 'ArrowLeft') handlePrev()
+      else if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault()
         handleFlip()
       }
     }
@@ -60,7 +61,7 @@ const Flashcards = ({ flashcards }) => {
   }, [])
 
   if (!flashcards || flashcards.length === 0) {
-    return <p className="text-center text-gray-600">No flashcards available.</p>
+    return <p className="text-center text-gray-600 dark:text-gray-300">No flashcards available.</p>
   }
 
   return (
@@ -75,17 +76,17 @@ const Flashcards = ({ flashcards }) => {
         <button
           onClick={handlePrev}
           aria-label="Previous flashcard"
-          className="rounded bg-gray-300 px-4 py-2 hover:bg-gray-400"
+          className="rounded bg-gray-300 px-4 py-2 hover:bg-gray-400 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600"
         >
           Prev
         </button>
-        <span className="text-lg font-medium">
+        <span className="text-lg font-medium text-gray-800 dark:text-gray-100">
           {currentIndex + 1} / {flashcards.length}
         </span>
         <button
           onClick={handleNext}
           aria-label="Next flashcard"
-          className="rounded bg-gray-300 px-4 py-2 hover:bg-gray-400"
+          className="rounded bg-gray-300 px-4 py-2 hover:bg-gray-400 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600"
         >
           Next
         </button>

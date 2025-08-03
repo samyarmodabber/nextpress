@@ -1,4 +1,3 @@
-// import TOCInline from 'pliny/ui/TOCInline'
 import Pre from 'pliny/ui/Pre'
 import BlogNewsletterForm from 'pliny/ui/BlogNewsletterForm'
 import type { MDXComponents } from 'mdx/types'
@@ -10,6 +9,7 @@ import TableWrapper from './TableWrapper'
 import YouTube from '@/components/tools/YouTube'
 import PDFList from '@/components/tools/PDFList'
 import Flashcards from '@/components/tools/Flashcards'
+import Quiz from '@/components/tools/Quiz'
 
 export const components: MDXComponents = {
   Image,
@@ -21,4 +21,5 @@ export const components: MDXComponents = {
   YouTube,
   PDFList,
   Flashcards,
+  Quiz,
 }

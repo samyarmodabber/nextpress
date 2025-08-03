@@ -23,12 +23,12 @@ This component is ideal for:
 
 export const quizData = [
   {
-    question: 'Fill in the blank: 5 + 7 = ___',
+    question: 'Fill in the blank: **5 + 7** = ___',
     blankAnswer: '12',
     type: 'blank',
   },
   {
-    question: 'What is the largest planet in our solar system?',
+    question: 'What is the **largest** planet in our solar system?',
     answers: ['Earth', 'Mars', 'Jupiter', 'Saturn'],
     correctIndex: 2,
     type: 'multiple',
@@ -36,11 +36,25 @@ export const quizData = [
 },
 {
 question: 'Who wrote the play "Romeo and Juliet"?',
-answers: ['William Shakespeare', 'Leo Tolstoy', 'Jane Austen', 'Mark Twain'],
+answers: ['William **Shakespeare**', 'Leo `Tolstoy`', 'Jane *Austen*', 'Mark __Twain__'],
 correctIndex: 0,
 type: 'multiple',
 
 },
+{
+question: 'What is the derivative of $x^2$?',
+type: 'blank',
+blankAnswer: '2x',
+},
+{
+question: 'Which image is Earth?',
+type: 'multiple',
+answers: [
+'![Earth](https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg)',
+'![Mars](https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg)',
+],
+correctIndex: 0,
+}
 ]
 
 <Quiz quizData={quizData} autoAdvance={false} />

@@ -1,6 +1,10 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import ReactMarkdown from 'react-markdown'
+import remarkMath from 'remark-math'
+import rehypeKatex from 'rehype-katex'
+import 'katex/dist/katex.min.css'
 
 type QuestionBase = {
   question: string
@@ -38,6 +42,23 @@ type QuizProps = {
   quizData: Question[]
   autoAdvance?: boolean
   timePerQuestion?: number
+}
+
+function MarkdownInline({ children }: { children: string }) {
+  return (
+    <ReactMarkdown
+      remarkPlugins={[remarkMath]}
+      rehypePlugins={[rehypeKatex]}
+      components={{
+        p: ({ children }) => <>{children}</>,
+        img: ({ src, alt }) => (
+          <img src={src || ''} alt={alt || ''} className="mx-auto max-h-40 rounded-md" />
+        ),
+      }}
+    >
+      {children}
+    </ReactMarkdown>
+  )
 }
 
 export default function Quiz({ quizData, autoAdvance = false, timePerQuestion = 10 }: QuizProps) {
@@ -256,14 +277,20 @@ export default function Quiz({ quizData, autoAdvance = false, timePerQuestion = 
               }`}
             >
               <p className="font-semibold">
-                {i + 1}. {item.question}
+                {i + 1}. <MarkdownInline>{item.question}</MarkdownInline>
               </p>
               <p>
-                Your answer: <strong>{item.selected}</strong>
+                Your answer:{' '}
+                <strong>
+                  <MarkdownInline>{item.selected}</MarkdownInline>
+                </strong>
               </p>
               {!item.isCorrect && (
                 <p>
-                  Correct answer: <strong>{item.correct}</strong>
+                  Correct answer:{' '}
+                  <strong>
+                    <MarkdownInline>{item.correct}</MarkdownInline>
+                  </strong>
                 </p>
               )}
             </li>
@@ -290,7 +317,9 @@ export default function Quiz({ quizData, autoAdvance = false, timePerQuestion = 
         </div>
       </div>
 
-      <p className="text-lg">{current.question}</p>
+      <div className="mb-4 text-lg">
+        <MarkdownInline>{current.question}</MarkdownInline>
+      </div>
 
       {current.type === 'multiple' ? (
         <>
@@ -322,7 +351,7 @@ export default function Quiz({ quizData, autoAdvance = false, timePerQuestion = 
                   <span className="absolute right-2 top-2 font-mono text-xs text-gray-500 dark:text-gray-300">
                     {idx + 1}
                   </span>
-                  {answer}
+                  <MarkdownInline>{answer}</MarkdownInline>
                 </button>
               )
             })}
@@ -333,7 +362,7 @@ export default function Quiz({ quizData, autoAdvance = false, timePerQuestion = 
               className="mt-4 w-full rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400"
             >
               <span className="absolute right-2 top-2 rounded bg-blue-800 px-1 font-mono text-xs text-white dark:bg-blue-900">
-                ␣
+                space
               </span>
               Next Question →
             </button>

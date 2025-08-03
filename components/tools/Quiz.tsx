@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/media-has-caption */
 'use client'
 
 import { useEffect, useState } from 'react'
@@ -6,9 +7,15 @@ import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import 'katex/dist/katex.min.css'
 
+type MediaType = {
+  type: 'audio' | 'video' | 'youtube'
+  src: string
+}
+
 type QuestionBase = {
   question: string
   type: 'multiple' | 'blank'
+  media?: MediaType
 }
 
 type MultipleChoiceQuestion = QuestionBase & {
@@ -44,6 +51,52 @@ type QuizProps = {
   timePerQuestion?: number
 }
 
+// Media Renderer Component
+function extractYouTubeId(url: string): string {
+  const match = url.match(/(?:youtube\.com.*[?&]v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/)
+  return match ? match[1] : url
+}
+
+function Media({ media }: { media?: MediaType }) {
+  if (!media) return null
+
+  if (media.type === 'audio') {
+    return (
+      <audio controls className="my-2 w-full">
+        <source src={media.src} type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+    )
+  }
+
+  if (media.type === 'video') {
+    return (
+      <video controls className="my-2 max-h-64 w-full rounded">
+        <source src={media.src} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    )
+  }
+
+  if (media.type === 'youtube') {
+    const id = extractYouTubeId(media.src)
+    return (
+      <div className="my-4 aspect-video w-full">
+        <iframe
+          className="h-full w-full rounded"
+          src={`https://www.youtube.com/embed/${id}`}
+          title="YouTube video"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      </div>
+    )
+  }
+
+  return null
+}
+
 function MarkdownInline({ children }: { children: string }) {
   return (
     <ReactMarkdown
@@ -66,7 +119,6 @@ export default function Quiz({ quizData, autoAdvance = false, timePerQuestion = 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [score, setScore] = useState(0)
   const [showResult, setShowResult] = useState(false)
-
   const [breakdown, setBreakdown] = useState<Breakdown[]>([])
   const [shuffledQuestions, setShuffledQuestions] = useState<QuestionWithShuffle[]>([])
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
@@ -121,7 +173,6 @@ export default function Quiz({ quizData, autoAdvance = false, timePerQuestion = 
       else handleAnswer(-1)
       return
     }
-
     const timer = setTimeout(() => setTimeLeft((prev) => prev - 1), 1000)
     return () => clearTimeout(timer)
   }, [timeLeft, selectedIndex, showResult, quizStarted])
@@ -149,9 +200,7 @@ export default function Quiz({ quizData, autoAdvance = false, timePerQuestion = 
       },
     ])
 
-    if (autoAdvance) {
-      setTimeout(goToNextQuestion, 1000)
-    }
+    if (autoAdvance) setTimeout(goToNextQuestion, 1000)
   }
 
   const handleBlankAnswer = () => {
@@ -162,7 +211,6 @@ export default function Quiz({ quizData, autoAdvance = false, timePerQuestion = 
     const isCorrect = userAnswer === correctAnswer
 
     setSelectedIndex(0)
-
     if (isCorrect) setScore((prev) => prev + 1)
 
     setBreakdown((prev) => [
@@ -318,6 +366,7 @@ export default function Quiz({ quizData, autoAdvance = false, timePerQuestion = 
       </div>
 
       <div className="mb-4 text-lg">
+        <Media media={current.media} />
         <MarkdownInline>{current.question}</MarkdownInline>
       </div>
 

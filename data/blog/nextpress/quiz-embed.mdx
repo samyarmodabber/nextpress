@@ -23,6 +23,25 @@ This component is ideal for:
 
 export const quizData = [
   {
+    question: 'What is the instrument shown in the video?',
+    type: 'multiple',
+    answers: ['Tanbur', 'Tar', 'Setar', 'Santur'],
+    correctIndex: 0,
+    media: {
+      type: 'youtube',
+      src: 'zMVfzPlU44M',
+    },
+  },
+  {
+    question: 'Listen to this audio. What note is played?',
+    type: 'blank',
+    blankAnswer: 'C',
+    media: {
+      type: 'audio',
+      src: '/static/media/c3-95007.mp3',
+    },
+  },
+  {
     question: 'Fill in the blank: **5 + 7** = ___',
     blankAnswer: '12',
     type: 'blank',
